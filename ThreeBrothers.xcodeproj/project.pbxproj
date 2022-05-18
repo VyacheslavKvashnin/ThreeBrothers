@@ -7,17 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BDA1DC162835013300E142CB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BDA1DC152835013300E142CB /* FirebaseAuth */; };
+		BDA1DC182835025700E142CB /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1DC172835025700E142CB /* AuthManager.swift */; };
+		BDA1DC1A2835069F00E142CB /* SMSCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1DC192835069F00E142CB /* SMSCodeViewController.swift */; };
+		BDA1DC1C283506AF00E142CB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1DC1B283506AF00E142CB /* MainViewController.swift */; };
 		BDA66DFF2834E465002A0A22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA66DFE2834E465002A0A22 /* AppDelegate.swift */; };
-		BDA66E032834E465002A0A22 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA66E022834E465002A0A22 /* LoginViewController.swift */; };
+		BDA66E032834E465002A0A22 /* PhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA66E022834E465002A0A22 /* PhoneViewController.swift */; };
 		BDA66E082834E466002A0A22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDA66E072834E466002A0A22 /* Assets.xcassets */; };
 		BDA66E0B2834E466002A0A22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDA66E092834E466002A0A22 /* LaunchScreen.storyboard */; };
 		BDA66E182834FD96002A0A22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BDA66E172834FD96002A0A22 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BDA1DC172835025700E142CB /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		BDA1DC192835069F00E142CB /* SMSCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeViewController.swift; sourceTree = "<group>"; };
+		BDA1DC1B283506AF00E142CB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BDA66DFB2834E465002A0A22 /* ThreeBrothers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThreeBrothers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDA66DFE2834E465002A0A22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BDA66E022834E465002A0A22 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BDA66E022834E465002A0A22 /* PhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewController.swift; sourceTree = "<group>"; };
 		BDA66E072834E466002A0A22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDA66E0A2834E466002A0A22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BDA66E0C2834E466002A0A22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -29,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDA1DC162835013300E142CB /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,7 +76,9 @@
 		BDA66E122834E8DF002A0A22 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				BDA66E022834E465002A0A22 /* LoginViewController.swift */,
+				BDA66E022834E465002A0A22 /* PhoneViewController.swift */,
+				BDA1DC192835069F00E142CB /* SMSCodeViewController.swift */,
+				BDA1DC1B283506AF00E142CB /* MainViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -100,6 +110,7 @@
 		BDA66E162834EB29002A0A22 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				BDA1DC172835025700E142CB /* AuthManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -121,6 +132,7 @@
 			);
 			name = ThreeBrothers;
 			packageProductDependencies = (
+				BDA1DC152835013300E142CB /* FirebaseAuth */,
 			);
 			productName = ThreeBrothers;
 			productReference = BDA66DFB2834E465002A0A22 /* ThreeBrothers.app */;
@@ -151,6 +163,7 @@
 			);
 			mainGroup = BDA66DF22834E465002A0A22;
 			packageReferences = (
+				BDA1DC142835013300E142CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = BDA66DFC2834E465002A0A22 /* Products */;
 			projectDirPath = "";
@@ -179,8 +192,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDA66E032834E465002A0A22 /* LoginViewController.swift in Sources */,
+				BDA66E032834E465002A0A22 /* PhoneViewController.swift in Sources */,
+				BDA1DC182835025700E142CB /* AuthManager.swift in Sources */,
 				BDA66DFF2834E465002A0A22 /* AppDelegate.swift in Sources */,
+				BDA1DC1A2835069F00E142CB /* SMSCodeViewController.swift in Sources */,
+				BDA1DC1C283506AF00E142CB /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +408,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BDA1DC142835013300E142CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = exactVersion;
+				version = 8.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BDA1DC152835013300E142CB /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BDA1DC142835013300E142CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BDA66DF32834E465002A0A22 /* Project object */;
 }
