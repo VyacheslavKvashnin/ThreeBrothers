@@ -6,7 +6,8 @@
 //
 
 import UIKit
-import FirebaseCore
+import Firebase
+import FirebaseAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,13 +15,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        FirebaseApp.configure()
+        
         let window = UIWindow()
         window.rootViewController = PhoneViewController()
+        
+        if Auth.auth().currentUser == nil {
+            let navVC = UINavigationController(rootViewController: PhoneViewController())
+            window.rootViewController = navVC
+        }
+        else {
+            window.rootViewController = MainViewController()
+        }
+        
         window.makeKeyAndVisible()
         self.window = window
         
-        FirebaseApp.configure()
+        
         
         return true
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+
     }
 }

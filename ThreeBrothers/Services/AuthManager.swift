@@ -42,4 +42,8 @@ class AuthManager {
             completion(true)
         }
     }
+    
+    func logOut() {
+        try! auth.signOut()
+    }
 }
