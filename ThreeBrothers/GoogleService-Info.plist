@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>293684182951-lb9mv76af2hslsvgrtdh1h9g9a3duf04.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.293684182951-lb9mv76af2hslsvgrtdh1h9g9a3duf04</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAA8D0iuBuPOmIkXCUuBZVKKhqnemM0LfI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>293684182951</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Kvashnin.ThreeBrothers</string>
+	<key>PROJECT_ID</key>
+	<string>threebrothers-54d8b</string>
+	<key>STORAGE_BUCKET</key>
+	<string>threebrothers-54d8b.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:293684182951:ios:93fcdd46d419829a584082</string>
+</dict>
+</plist>

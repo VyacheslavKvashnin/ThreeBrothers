@@ -8,18 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		BDA66DFF2834E465002A0A22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA66DFE2834E465002A0A22 /* AppDelegate.swift */; };
-		BDA66E032834E465002A0A22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA66E022834E465002A0A22 /* ViewController.swift */; };
+		BDA66E032834E465002A0A22 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA66E022834E465002A0A22 /* LoginViewController.swift */; };
 		BDA66E082834E466002A0A22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDA66E072834E466002A0A22 /* Assets.xcassets */; };
 		BDA66E0B2834E466002A0A22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDA66E092834E466002A0A22 /* LaunchScreen.storyboard */; };
+		BDA66E182834FD96002A0A22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BDA66E172834FD96002A0A22 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BDA66DFB2834E465002A0A22 /* ThreeBrothers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThreeBrothers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDA66DFE2834E465002A0A22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BDA66E022834E465002A0A22 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BDA66E022834E465002A0A22 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BDA66E072834E466002A0A22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDA66E0A2834E466002A0A22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BDA66E0C2834E466002A0A22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDA66E172834FD96002A0A22 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,13 +54,54 @@
 		BDA66DFD2834E465002A0A22 /* ThreeBrothers */ = {
 			isa = PBXGroup;
 			children = (
-				BDA66DFE2834E465002A0A22 /* AppDelegate.swift */,
-				BDA66E022834E465002A0A22 /* ViewController.swift */,
-				BDA66E072834E466002A0A22 /* Assets.xcassets */,
+				BDA66E122834E8DF002A0A22 /* ViewControllers */,
+				BDA66E162834EB29002A0A22 /* Services */,
+				BDA66E152834EA60002A0A22 /* Models */,
+				BDA66E142834E8FB002A0A22 /* App */,
+				BDA66E132834E8EE002A0A22 /* Resurces */,
 				BDA66E092834E466002A0A22 /* LaunchScreen.storyboard */,
-				BDA66E0C2834E466002A0A22 /* Info.plist */,
+				BDA66E172834FD96002A0A22 /* GoogleService-Info.plist */,
 			);
 			path = ThreeBrothers;
+			sourceTree = "<group>";
+		};
+		BDA66E122834E8DF002A0A22 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BDA66E022834E465002A0A22 /* LoginViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		BDA66E132834E8EE002A0A22 /* Resurces */ = {
+			isa = PBXGroup;
+			children = (
+				BDA66E072834E466002A0A22 /* Assets.xcassets */,
+			);
+			path = Resurces;
+			sourceTree = "<group>";
+		};
+		BDA66E142834E8FB002A0A22 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				BDA66DFE2834E465002A0A22 /* AppDelegate.swift */,
+				BDA66E0C2834E466002A0A22 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		BDA66E152834EA60002A0A22 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BDA66E162834EB29002A0A22 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,6 +120,8 @@
 			dependencies = (
 			);
 			name = ThreeBrothers;
+			packageProductDependencies = (
+			);
 			productName = ThreeBrothers;
 			productReference = BDA66DFB2834E465002A0A22 /* ThreeBrothers.app */;
 			productType = "com.apple.product-type.application";
@@ -105,6 +150,8 @@
 				Base,
 			);
 			mainGroup = BDA66DF22834E465002A0A22;
+			packageReferences = (
+			);
 			productRefGroup = BDA66DFC2834E465002A0A22 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -121,6 +168,7 @@
 			files = (
 				BDA66E0B2834E466002A0A22 /* LaunchScreen.storyboard in Resources */,
 				BDA66E082834E466002A0A22 /* Assets.xcassets in Resources */,
+				BDA66E182834FD96002A0A22 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,7 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDA66E032834E465002A0A22 /* ViewController.swift in Sources */,
+				BDA66E032834E465002A0A22 /* LoginViewController.swift in Sources */,
 				BDA66DFF2834E465002A0A22 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,7 +323,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P745L5C6BY;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ThreeBrothers/Info.plist;
+				INFOPLIST_FILE = ThreeBrothers/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -303,7 +351,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P745L5C6BY;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ThreeBrothers/Info.plist;
+				INFOPLIST_FILE = ThreeBrothers/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
