@@ -41,11 +41,11 @@ class SMSCodeViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        addSubviews()
+        setupUI()
         smsCodeTextField.delegate = self
     }
     
-    private func addSubviews() {
+    private func setupUI() {
         view.addSubview(iconImage)
         view.addSubview(smsCodeTextField)
         view.addSubview(loginButton)
@@ -70,5 +70,18 @@ class SMSCodeViewController: UIViewController, UITextFieldDelegate {
             verifyCodePressed(code: code)
         }
         return true
+    }
+    
+    func getTabBarVC() -> UITabBarController {
+        let tabBarVC = UITabBarController()
+        
+        let mainVC = MainViewController()
+        let profileVC = ProfileViewController()
+        let contactsVC = ContactsViewController()
+        let cartVC = CartViewController()
+        
+        tabBarVC.setViewControllers([mainVC, profileVC, contactsVC, cartVC], animated: true)
+        
+        return tabBarVC
     }
 }

@@ -46,11 +46,11 @@ class PhoneViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         title = "Enter Phone Number"
         view.backgroundColor = .white
-        addSubviews()
+        setupUI()
         phoneTextField.delegate = self
     }
     
-    private func addSubviews() {
+    private func setupUI() {
         view.addSubview(iconImage)
         view.addSubview(phoneTextField)
         view.addSubview(loginButton)
