@@ -36,7 +36,6 @@ class MainViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Выйти", style: .default, handler: { [unowned self] _ in
             AuthManager.shared.logOut()
             dismiss(animated: true, completion: nil)
-            
         }))
         alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { _ in
             

@@ -71,17 +71,4 @@ class SMSCodeViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
-    
-    func getTabBarVC() -> UITabBarController {
-        let tabBarVC = UITabBarController()
-        
-        let mainVC = MainViewController()
-        let profileVC = ProfileViewController()
-        let contactsVC = ContactsViewController()
-        let cartVC = CartViewController()
-        
-        tabBarVC.setViewControllers([mainVC, profileVC, contactsVC, cartVC], animated: true)
-        
-        return tabBarVC
-    }
 }
