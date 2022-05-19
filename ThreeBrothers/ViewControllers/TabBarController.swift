@@ -13,8 +13,8 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         
         let mainVC = MainViewController()
-        let profileVC = ProfileViewController()
-        let contactsVC = ContactsViewController()
+        let profileVC = UINavigationController(rootViewController: ProfileViewController())
+        let contactsVC = UINavigationController(rootViewController: ContactsViewController())
         let cartVC = CartViewController()
         
         mainVC.title = "Меню"
@@ -34,5 +34,3 @@ class TabBarController: UITabBarController {
         self.modalPresentationStyle = .fullScreen
     }
 }
-
-// com
