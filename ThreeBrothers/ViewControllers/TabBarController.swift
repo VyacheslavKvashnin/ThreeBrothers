@@ -34,4 +34,4 @@ class TabBarController: UITabBarController {
         self.modalPresentationStyle = .fullScreen
     }
 }
-// collection
+// collec
