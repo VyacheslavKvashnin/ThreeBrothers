@@ -12,6 +12,7 @@
 		BD4DAD002836772B0048BF72 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4DACFF2836772B0048BF72 /* ContactsViewController.swift */; };
 		BD4DAD022836773E0048BF72 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4DAD012836773E0048BF72 /* CartViewController.swift */; };
 		BD4DAD042836815B0048BF72 /* TextFieldExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4DAD032836815B0048BF72 /* TextFieldExtention.swift */; };
+		BD4DAD0828368A3F0048BF72 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4DAD0728368A3F0048BF72 /* TabBarController.swift */; };
 		BDA1DC162835013300E142CB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BDA1DC152835013300E142CB /* FirebaseAuth */; };
 		BDA1DC182835025700E142CB /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1DC172835025700E142CB /* AuthManager.swift */; };
 		BDA1DC1A2835069F00E142CB /* SMSCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1DC192835069F00E142CB /* SMSCodeViewController.swift */; };
@@ -29,6 +30,7 @@
 		BD4DACFF2836772B0048BF72 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		BD4DAD012836773E0048BF72 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		BD4DAD032836815B0048BF72 /* TextFieldExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtention.swift; sourceTree = "<group>"; };
+		BD4DAD0728368A3F0048BF72 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		BDA1DC172835025700E142CB /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		BDA1DC192835069F00E142CB /* SMSCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeViewController.swift; sourceTree = "<group>"; };
 		BDA1DC1B283506AF00E142CB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			children = (
 				BDA66E022834E465002A0A22 /* PhoneViewController.swift */,
 				BDA1DC192835069F00E142CB /* SMSCodeViewController.swift */,
+				BD4DAD0728368A3F0048BF72 /* TabBarController.swift */,
 				BDA1DC1B283506AF00E142CB /* MainViewController.swift */,
 				BD4DACFD283677090048BF72 /* ProfileViewController.swift */,
 				BD4DACFF2836772B0048BF72 /* ContactsViewController.swift */,
@@ -210,6 +213,7 @@
 				BDA66E032834E465002A0A22 /* PhoneViewController.swift in Sources */,
 				BDA1DC182835025700E142CB /* AuthManager.swift in Sources */,
 				BD4DAD042836815B0048BF72 /* TextFieldExtention.swift in Sources */,
+				BD4DAD0828368A3F0048BF72 /* TabBarController.swift in Sources */,
 				BD4DACFC2836683C0048BF72 /* ButtonExtention.swift in Sources */,
 				BDA66DFF2834E465002A0A22 /* AppDelegate.swift in Sources */,
 				BD4DACFE283677090048BF72 /* ProfileViewController.swift in Sources */,

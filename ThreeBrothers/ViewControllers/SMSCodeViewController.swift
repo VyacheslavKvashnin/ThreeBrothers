@@ -55,10 +55,11 @@ class SMSCodeViewController: UIViewController, UITextFieldDelegate {
         AuthManager.shared.verifyCode(smsCode: code) { [weak self] success in
             guard success else { return }
             DispatchQueue.main.async {
-                let mainVC = MainViewController()
+                let mainVC = TabBarController()
                 let navVC = UINavigationController(rootViewController: mainVC)
                 navVC.modalPresentationStyle = .fullScreen
                 self?.present(navVC, animated: true)
+               
             }
         }
     }
@@ -70,5 +71,31 @@ class SMSCodeViewController: UIViewController, UITextFieldDelegate {
             verifyCodePressed(code: code)
         }
         return true
+    }
+    
+    func getTabBarVC() {
+        let tabBarVC = UITabBarController()
+        
+        let mainVC = MainViewController()
+        let profileVC = ProfileViewController()
+        let contactsVC = ContactsViewController()
+        let cartVC = CartViewController()
+        
+        mainVC.title = "Меню"
+        profileVC.title = "Профиль"
+        contactsVC.title = "Котнакты"
+        cartVC.title = "Корзина"
+        
+        tabBarVC.setViewControllers([mainVC, profileVC, contactsVC, cartVC], animated: false)
+        
+        guard let items = tabBarVC.tabBar.items else { return }
+        
+        for item in items {
+            item.image = UIImage(systemName: "house")
+        }
+        
+        tabBarVC.modalPresentationStyle = .fullScreen
+        
+        present(tabBarVC, animated: true)
     }
 }

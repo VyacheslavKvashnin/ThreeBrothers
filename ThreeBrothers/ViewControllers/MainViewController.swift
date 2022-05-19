@@ -21,25 +21,28 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Main"
-        view.backgroundColor = .green
+        title = "Меню"
+        view.backgroundColor = .white
         logOutButton.center = view.center
         view.addSubview(logOutButton)
     }
     
     @objc func logOutAccount() {
         downLoadSheet()
+       
     }
     
     func downLoadSheet() {
         let alert = UIAlertController(title: "Вы действительно хотите выйти?", message: "", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Выйти", style: .default, handler: { [unowned self] _ in
             AuthManager.shared.logOut()
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true)
         }))
         alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { _ in
             
         }))
         present(alert, animated: true)
     }
+    
 }
+

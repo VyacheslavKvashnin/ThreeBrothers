@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window.rootViewController = navVC
         }
         else {
-            window.rootViewController = MainViewController()
+            window.rootViewController = TabBarController()
         }
         
         window.makeKeyAndVisible()
