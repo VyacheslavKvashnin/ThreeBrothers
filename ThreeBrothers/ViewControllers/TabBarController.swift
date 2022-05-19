@@ -26,8 +26,11 @@ class TabBarController: UITabBarController {
         
         guard let items = self.tabBar.items else { return }
         
+        let images = ["menucard", "person.circle", "mappin.circle", "cart"]
         
-        
+        for i in 0 ..< items.count {
+            items[i].image = UIImage(systemName: images[i])
+        }
         self.modalPresentationStyle = .fullScreen
     }
 }
