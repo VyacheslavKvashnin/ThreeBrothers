@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD3A5EC32836BC75008F63C8 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BD3A5EC22836BC75008F63C8 /* FirebaseAuth */; };
+		BD3A5EC52836BC75008F63C8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = BD3A5EC42836BC75008F63C8 /* FirebaseStorage */; };
 		BD4DACFC2836683C0048BF72 /* ButtonExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4DACFB2836683C0048BF72 /* ButtonExtention.swift */; };
 		BD4DACFE283677090048BF72 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4DACFD283677090048BF72 /* ProfileViewController.swift */; };
 		BD4DAD002836772B0048BF72 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4DACFF2836772B0048BF72 /* ContactsViewController.swift */; };
 		BD4DAD022836773E0048BF72 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4DAD012836773E0048BF72 /* CartViewController.swift */; };
 		BD4DAD042836815B0048BF72 /* TextFieldExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4DAD032836815B0048BF72 /* TextFieldExtention.swift */; };
 		BD4DAD0828368A3F0048BF72 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4DAD0728368A3F0048BF72 /* TabBarController.swift */; };
-		BDA1DC162835013300E142CB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BDA1DC152835013300E142CB /* FirebaseAuth */; };
 		BDA1DC182835025700E142CB /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1DC172835025700E142CB /* AuthManager.swift */; };
 		BDA1DC1A2835069F00E142CB /* SMSCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1DC192835069F00E142CB /* SMSCodeViewController.swift */; };
 		BDA1DC1C283506AF00E142CB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1DC1B283506AF00E142CB /* MainViewController.swift */; };
@@ -48,7 +49,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDA1DC162835013300E142CB /* FirebaseAuth in Frameworks */,
+				BD3A5EC32836BC75008F63C8 /* FirebaseAuth in Frameworks */,
+				BD3A5EC52836BC75008F63C8 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,7 +152,8 @@
 			);
 			name = ThreeBrothers;
 			packageProductDependencies = (
-				BDA1DC152835013300E142CB /* FirebaseAuth */,
+				BD3A5EC22836BC75008F63C8 /* FirebaseAuth */,
+				BD3A5EC42836BC75008F63C8 /* FirebaseStorage */,
 			);
 			productName = ThreeBrothers;
 			productReference = BDA66DFB2834E465002A0A22 /* ThreeBrothers.app */;
@@ -181,7 +184,7 @@
 			);
 			mainGroup = BDA66DF22834E465002A0A22;
 			packageReferences = (
-				BDA1DC142835013300E142CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				BD3A5EC12836BC75008F63C8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = BDA66DFC2834E465002A0A22 /* Products */;
 			projectDirPath = "";
@@ -434,7 +437,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BDA1DC142835013300E142CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		BD3A5EC12836BC75008F63C8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
@@ -445,10 +448,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BDA1DC152835013300E142CB /* FirebaseAuth */ = {
+		BD3A5EC22836BC75008F63C8 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BDA1DC142835013300E142CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = BD3A5EC12836BC75008F63C8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		BD3A5EC42836BC75008F63C8 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BD3A5EC12836BC75008F63C8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
