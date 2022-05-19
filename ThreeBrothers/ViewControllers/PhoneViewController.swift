@@ -29,20 +29,17 @@ class PhoneViewController: UIViewController, UITextFieldDelegate {
     }()
     
     private let loginButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.frame = CGRect(x: 50, y: 500, width: 300, height: 50)
-        button.backgroundColor = .purple
-        button.layer.cornerRadius = 10
-        button.setTitle("Next", for: .normal)
+    let button = UIButton.customButton(frame: CGRect(x: 50, y: 500, width: 300, height: 50))
         button.addTarget(self, action: #selector(pressedButton), for: .touchUpInside)
         return button
     }()
     
-    @objc func pressedButton() {
+    @objc func pressedButton(sender: UIButton) {
         guard let text = phoneTextField.text, !text.isEmpty else {
             return
         }
         startAuthPressed(text: text)
+        self.animatedView(newViewAnimated: sender)
     }
     
     override func viewDidLoad() {
@@ -78,5 +75,16 @@ class PhoneViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
+    
+    private func animatedView(newViewAnimated: UIView) {
+        UIView.animate(withDuration: 0.15,
+                       delay: 0,
+                       usingSpringWithDamping: 0.2,
+                       initialSpringVelocity: 0.5,
+                       options: .curveEaseIn) {
+            
+        } completion: { _ in
+            
+        }
+    }
 }
-
