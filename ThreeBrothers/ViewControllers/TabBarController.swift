@@ -23,6 +23,11 @@ class TabBarController: UITabBarController {
         cartVC.title = "Корзина"
         
         self.setViewControllers([mainVC, profileVC, contactsVC, cartVC], animated: true)
+        
+        guard let items = self.tabBar.items else { return }
+        
+        
+        
         self.modalPresentationStyle = .fullScreen
     }
 }
