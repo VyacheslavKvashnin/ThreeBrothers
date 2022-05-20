@@ -7,10 +7,10 @@
 
 import UIKit
 
-class PhoneViewController: UIViewController, UITextFieldDelegate {
+final class PhoneViewController: UIViewController, UITextFieldDelegate {
     
-    let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
-    let stackView = UIStackView()
+    private let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+    private let stackView = UIStackView()
     
     private let iconImage: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "3brataImage.jpg"))
@@ -28,10 +28,8 @@ class PhoneViewController: UIViewController, UITextFieldDelegate {
         return textField
     }()
     
-    let button = UILabel()
-    
     private let loginButton: UIButton = {
-    let button = UIButton.customButton()
+        let button = UIButton.customButton()
         button.addTarget(self, action: #selector(pressedButton), for: .touchUpInside)
         return button
     }()
@@ -73,7 +71,7 @@ class PhoneViewController: UIViewController, UITextFieldDelegate {
         stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30).isActive = true
     }
     
-    func startAuthPressed(text: String) {
+    private func startAuthPressed(text: String) {
         let number = "+1\(text)"
         AuthManager.shared.startAuth(phoneNumber: number, completion: { [weak self] success in
             guard success else { return }

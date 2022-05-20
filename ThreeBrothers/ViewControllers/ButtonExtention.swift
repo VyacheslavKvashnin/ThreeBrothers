@@ -14,7 +14,7 @@ extension UIButton {
         button.setTitleColor(UIColor.white, for: .normal)
         button.setTitleColor(UIColor.systemGray4, for: .highlighted)
         button.backgroundColor = .systemCyan
-        button.layer.cornerRadius = button.frame.height / 2
+        button.layer.cornerRadius = 10
         button.setTitle("Next", for: .normal)
         return button
     }
