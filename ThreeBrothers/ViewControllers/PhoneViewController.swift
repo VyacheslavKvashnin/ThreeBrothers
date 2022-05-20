@@ -68,6 +68,11 @@ final class PhoneViewController: UIViewController {
         stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50).isActive = true
         stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50).isActive = true
         stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30).isActive = true
+        
+        NSLayoutConstraint.activate([
+            loginButton.heightAnchor.constraint(equalToConstant: 60),
+            iconImage.heightAnchor.constraint(equalToConstant: 300)
+        ])
     }
     
     private func startAuthPressed(text: String) {
