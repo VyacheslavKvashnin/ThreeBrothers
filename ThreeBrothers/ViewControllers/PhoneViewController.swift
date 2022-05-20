@@ -24,6 +24,7 @@ final class PhoneViewController: UIViewController {
         textField.layer.cornerRadius = 10
         textField.borderStyle = .roundedRect
         textField.placeholder = "Enter Your Number"
+        textField.keyboardType = .asciiCapableNumberPad
         textField.returnKeyType = .continue
         return textField
     }()
@@ -47,12 +48,19 @@ final class PhoneViewController: UIViewController {
         view.backgroundColor = .white
         phoneTextField.delegate = self
         configureStackView()
+        setNotificationForKeyboard()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func configureStackView() {
         view.addSubview(stackView)
         stackView.axis = .vertical
-        stackView.distribution = .equalCentering
+        stackView.distribution = .equalSpacing
         stackView.spacing = 20
         
         stackView.addArrangedSubview(iconImage)
@@ -67,12 +75,34 @@ final class PhoneViewController: UIViewController {
         stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50).isActive = true
         stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -150).isActive = true
         
         NSLayoutConstraint.activate([
             loginButton.heightAnchor.constraint(equalToConstant: 60),
-            iconImage.heightAnchor.constraint(equalToConstant: 300)
+            phoneTextField.heightAnchor.constraint(equalToConstant: 30),
+            iconImage.heightAnchor.constraint(equalToConstant: 300),
+            loginButton.topAnchor.constraint(equalTo: phoneTextField.bottomAnchor, constant: 30),
+            phoneTextField.topAnchor.constraint(equalTo: iconImage.bottomAnchor, constant: 40)
         ])
+    }
+    
+    func setNotificationForKeyboard() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.stackView.frame.origin.y == 0 {
+                self.stackView.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.stackView.frame.origin.y != 0 {
+            self.stackView.frame.origin.y = 0
+        }
     }
     
     private func startAuthPressed(text: String) {
@@ -94,6 +124,8 @@ extension PhoneViewController: UITextFieldDelegate {
         if let text = textField.text, !text.isEmpty {
             startAuthPressed(text: text)
         }
+        
         return true
+        
     }
 }
