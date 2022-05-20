@@ -14,7 +14,7 @@ class PhoneViewController: UIViewController, UITextFieldDelegate {
     
     private let iconImage: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "3brataImage.jpg"))
-        imageView.layer.cornerRadius = imageView.frame.width / 2
+        imageView.layer.cornerRadius = 20
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -44,41 +44,33 @@ class PhoneViewController: UIViewController, UITextFieldDelegate {
         self.animatedView(newViewAnimated: sender)
     }
     
-//    private var stackView: UIStackView = {
-//       let stackView = UIStackView()
-//        stackView.axis = .vertical
-//        stackView.distribution = .equalCentering
-//        stackView.alignment = .fill
-//        stackView.spacing = 16.0
-//        stackView.backgroundColor = .red
-//        return stackView
-//    }()
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Enter Phone Number"
         view.backgroundColor = .white
-        setupUI()
         phoneTextField.delegate = self
+        configureStackView()
     }
     
     private func configureStackView() {
         view.addSubview(stackView)
+        stackView.axis = .vertical
+        stackView.distribution = .equalCentering
+        stackView.spacing = 20
+        
+        stackView.addArrangedSubview(iconImage)
+        stackView.addArrangedSubview(phoneTextField)
+        stackView.addArrangedSubview(loginButton)
+        
+        setStackViewConstraints()
     }
     
     private func setStackViewConstraints() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
-    }
-    
-    private func setupUI() {
-
-//        view.addSubview(iconImage)
-//        view.addSubview(phoneTextField)
-//        view.addSubview(loginButton)
+        stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30).isActive = true
     }
     
     func startAuthPressed(text: String) {
@@ -111,11 +103,5 @@ class PhoneViewController: UIViewController, UITextFieldDelegate {
         } completion: { _ in
             
         }
-    }
-    
-    private func addConstraints() {
-        let constraints = [NSLayoutConstraint]()
-        
-        
     }
 }
