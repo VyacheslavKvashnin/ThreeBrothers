@@ -26,7 +26,7 @@ class SMSCodeViewController: UIViewController, UITextFieldDelegate {
     }()
     
     private let loginButton: UIButton = {
-       let button = UIButton.customButton(frame: CGRect(x: 50, y: 500, width: 300, height: 50))
+       let button = UIButton.customButton()
         button.addTarget(self, action: #selector(pressedButton), for: .touchUpInside)
         return button
     }()

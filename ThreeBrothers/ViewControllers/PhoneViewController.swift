@@ -10,17 +10,17 @@ import UIKit
 class PhoneViewController: UIViewController, UITextFieldDelegate {
     
     let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+    let stackView = UIStackView()
     
     private let iconImage: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "3brataImage.jpg"))
-        imageView.frame = CGRect(x: 100, y: 100, width: 200, height: 200)
         imageView.layer.cornerRadius = imageView.frame.width / 2
         imageView.clipsToBounds = true
         return imageView
     }()
     
     private let phoneTextField: UITextField = {
-        let textField = UITextField(frame: CGRect(x: 50, y: 400, width: 300, height: 30))
+        let textField = UITextField()
         textField.layer.cornerRadius = 10
         textField.borderStyle = .roundedRect
         textField.placeholder = "Enter Your Number"
@@ -28,8 +28,10 @@ class PhoneViewController: UIViewController, UITextFieldDelegate {
         return textField
     }()
     
+    let button = UILabel()
+    
     private let loginButton: UIButton = {
-    let button = UIButton.customButton(frame: CGRect(x: 50, y: 500, width: 300, height: 50))
+    let button = UIButton.customButton()
         button.addTarget(self, action: #selector(pressedButton), for: .touchUpInside)
         return button
     }()
@@ -42,6 +44,17 @@ class PhoneViewController: UIViewController, UITextFieldDelegate {
         self.animatedView(newViewAnimated: sender)
     }
     
+//    private var stackView: UIStackView = {
+//       let stackView = UIStackView()
+//        stackView.axis = .vertical
+//        stackView.distribution = .equalCentering
+//        stackView.alignment = .fill
+//        stackView.spacing = 16.0
+//        stackView.backgroundColor = .red
+//        return stackView
+//    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Enter Phone Number"
@@ -50,10 +63,22 @@ class PhoneViewController: UIViewController, UITextFieldDelegate {
         phoneTextField.delegate = self
     }
     
+    private func configureStackView() {
+        view.addSubview(stackView)
+    }
+    
+    private func setStackViewConstraints() {
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
+    }
+    
     private func setupUI() {
-        view.addSubview(iconImage)
-        view.addSubview(phoneTextField)
-        view.addSubview(loginButton)
+
+//        view.addSubview(iconImage)
+//        view.addSubview(phoneTextField)
+//        view.addSubview(loginButton)
     }
     
     func startAuthPressed(text: String) {
@@ -86,5 +111,11 @@ class PhoneViewController: UIViewController, UITextFieldDelegate {
         } completion: { _ in
             
         }
+    }
+    
+    private func addConstraints() {
+        let constraints = [NSLayoutConstraint]()
+        
+        
     }
 }

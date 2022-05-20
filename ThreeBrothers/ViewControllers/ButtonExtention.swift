@@ -8,9 +8,9 @@
 import UIKit
 
 extension UIButton {
-    class func customButton(frame: CGRect) -> UIButton {
+    class func customButton() -> UIButton {
         let button = UIButton()
-        button.frame = frame
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(UIColor.white, for: .normal)
         button.setTitleColor(UIColor.systemGray4, for: .highlighted)
         button.backgroundColor = .systemCyan
