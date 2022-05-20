@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class PhoneViewController: UIViewController, UITextFieldDelegate {
+final class PhoneViewController: UIViewController {
     
     private let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
     private let stackView = UIStackView()
@@ -39,7 +39,6 @@ final class PhoneViewController: UIViewController, UITextFieldDelegate {
             return
         }
         startAuthPressed(text: text)
-        self.animatedView(newViewAnimated: sender)
     }
     
     override func viewDidLoad() {
@@ -82,24 +81,14 @@ final class PhoneViewController: UIViewController, UITextFieldDelegate {
             }
         })
     }
-    
+}
+
+extension PhoneViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         if let text = textField.text, !text.isEmpty {
             startAuthPressed(text: text)
         }
         return true
-    }
-    
-    private func animatedView(newViewAnimated: UIView) {
-        UIView.animate(withDuration: 0.15,
-                       delay: 0,
-                       usingSpringWithDamping: 0.2,
-                       initialSpringVelocity: 0.5,
-                       options: .curveEaseIn) {
-            
-        } completion: { _ in
-            
-        }
     }
 }
