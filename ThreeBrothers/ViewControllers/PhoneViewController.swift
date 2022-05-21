@@ -49,13 +49,10 @@ final class PhoneViewController: UIViewController {
         phoneTextField.delegate = self
         configureStackView()
         setNotificationForKeyboard()
+        
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
+   
     
     private func configureStackView() {
         view.addSubview(stackView)
@@ -72,10 +69,9 @@ final class PhoneViewController: UIViewController {
     
     private func setStackViewConstraints() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80).isActive = true
         stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50).isActive = true
         stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -150).isActive = true
         
         NSLayoutConstraint.activate([
             loginButton.heightAnchor.constraint(equalToConstant: 60),
@@ -93,16 +89,21 @@ final class PhoneViewController: UIViewController {
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.stackView.frame.origin.y == 0 {
-                self.stackView.frame.origin.y -= keyboardSize.height
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
             }
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        if self.stackView.frame.origin.y != 0 {
-            self.stackView.frame.origin.y = 0
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
         }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func startAuthPressed(text: String) {
@@ -124,8 +125,6 @@ extension PhoneViewController: UITextFieldDelegate {
         if let text = textField.text, !text.isEmpty {
             startAuthPressed(text: text)
         }
-        
         return true
-        
     }
 }
