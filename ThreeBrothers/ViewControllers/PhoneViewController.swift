@@ -13,7 +13,7 @@ final class PhoneViewController: UIViewController {
     private let stackView = UIStackView()
     
     private let iconImage: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "3brataImage.jpg"))
+        let imageView = UIImageView(image: UIImage(named: "ThreeBrother.jpg"))
         imageView.layer.cornerRadius = 20
         imageView.clipsToBounds = true
         return imageView
@@ -49,10 +49,31 @@ final class PhoneViewController: UIViewController {
         phoneTextField.delegate = self
         configureStackView()
         setNotificationForKeyboard()
-        
+        gestureTap()
+//        assignBackground()
     }
     
-   
+//    func assignBackground(){
+//        let background = UIImage(named: "background")
+//
+//        var imageView: UIImageView!
+//        imageView = UIImageView(frame: view.bounds)
+//        imageView.contentMode =  .scaleToFill
+//        imageView.clipsToBounds = true
+//        imageView.image = background
+//        imageView.center = view.center
+//        view.addSubview(imageView)
+//        self.view.sendSubviewToBack(imageView)
+//    }
+    
+    private func gestureTap() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func handleTap() {
+        view.endEditing(true)
+    }
     
     private func configureStackView() {
         view.addSubview(stackView)
@@ -90,7 +111,7 @@ final class PhoneViewController: UIViewController {
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
+                self.view.frame.origin.y -= keyboardSize.height / 3.2
             }
         }
     }
