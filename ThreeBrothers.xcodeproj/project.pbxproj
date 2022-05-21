@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD2821232838EB2D00DBF1C2 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2821222838EB2D00DBF1C2 /* AlertController.swift */; };
 		BD3A5EC32836BC75008F63C8 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BD3A5EC22836BC75008F63C8 /* FirebaseAuth */; };
 		BD3A5EC52836BC75008F63C8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = BD3A5EC42836BC75008F63C8 /* FirebaseStorage */; };
 		BD4DACFC2836683C0048BF72 /* ButtonExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4DACFB2836683C0048BF72 /* ButtonExtention.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BD2821222838EB2D00DBF1C2 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		BD4DACFB2836683C0048BF72 /* ButtonExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtention.swift; sourceTree = "<group>"; };
 		BD4DACFD283677090048BF72 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BD4DACFF2836772B0048BF72 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				BD4DAD012836773E0048BF72 /* CartViewController.swift */,
 				BD4DAD032836815B0048BF72 /* TextFieldExtention.swift */,
 				BD4DACFB2836683C0048BF72 /* ButtonExtention.swift */,
+				BD2821222838EB2D00DBF1C2 /* AlertController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				BDA1DC182835025700E142CB /* AuthManager.swift in Sources */,
 				BD4DAD042836815B0048BF72 /* TextFieldExtention.swift in Sources */,
 				BD4DAD0828368A3F0048BF72 /* TabBarController.swift in Sources */,
+				BD2821232838EB2D00DBF1C2 /* AlertController.swift in Sources */,
 				BD4DACFC2836683C0048BF72 /* ButtonExtention.swift in Sources */,
 				BDA66DFF2834E465002A0A22 /* AppDelegate.swift in Sources */,
 				BD4DACFE283677090048BF72 /* ProfileViewController.swift in Sources */,

@@ -23,7 +23,7 @@ final class PhoneViewController: UIViewController {
         textField.borderStyle = .roundedRect
         textField.placeholder = "Enter Your Number"
         textField.keyboardType = .asciiCapableNumberPad
-        textField.returnKeyType = .continue
+        textField.clearButtonMode = .whileEditing
         return textField
     }()
     
@@ -128,7 +128,10 @@ final class PhoneViewController: UIViewController {
     private func startAuthPressed(text: String) {
         let number = "+1\(text)"
         AuthManager.shared.startAuth(phoneNumber: number, completion: { [weak self] success in
-            guard success else { return }
+            guard success else {
+                self?.showAlert(title: "Ошибка", message: "Некорректный телефонный номер")
+                return
+            }
             DispatchQueue.main.async {
                 let smsCodeVC = SMSCodeViewController()
                 smsCodeVC.title = "Enter Code"
@@ -145,5 +148,13 @@ extension PhoneViewController: UITextFieldDelegate {
             startAuthPressed(text: text)
         }
         return true
+    }
+}
+
+extension UIViewController {
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 }
