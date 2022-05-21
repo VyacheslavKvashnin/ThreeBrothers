@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SMSCodeViewController: UIViewController {
+final class SMSCodeViewController: UIViewController {
     
     private let stackView = UIStackView()
     
