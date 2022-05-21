@@ -14,8 +14,6 @@ final class PhoneViewController: UIViewController {
     
     private let iconImage: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "ThreeBrother.jpg"))
-        imageView.layer.cornerRadius = 20
-        imageView.clipsToBounds = true
         return imageView
     }()
     

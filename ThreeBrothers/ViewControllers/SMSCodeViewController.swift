@@ -7,19 +7,19 @@
 
 import UIKit
 
-class SMSCodeViewController: UIViewController, UITextFieldDelegate {
+class SMSCodeViewController: UIViewController {
+    
+    private let stackView = UIStackView()
     
     private let iconImage: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "3brataImage.jpg"))
-        imageView.frame = CGRect(x: 100, y: 100, width: 200, height: 200)
-        imageView.layer.cornerRadius = imageView.frame.width / 2
-        imageView.clipsToBounds = true
+        let imageView = UIImageView(image: UIImage(named: "ThreeBrother.jpg"))
         return imageView
     }()
     
     private let smsCodeTextField: UITextField = {
-        let textField = UITextField(frame: CGRect(x: 50, y: 400, width: 300, height: 30))
+        let textField = UITextField()
         textField.layer.cornerRadius = 10
+        textField.borderStyle = .roundedRect
         textField.placeholder = "Enter SMS Code"
         textField.keyboardType = .asciiCapableNumberPad
         textField.returnKeyType = .continue
@@ -27,7 +27,7 @@ class SMSCodeViewController: UIViewController, UITextFieldDelegate {
     }()
     
     private let loginButton: UIButton = {
-       let button = UIButton.customButton()
+        let button = UIButton.customButton()
         button.addTarget(self, action: #selector(pressedButton), for: .touchUpInside)
         return button
     }()
@@ -42,14 +42,9 @@ class SMSCodeViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        setupUI()
+        configureStackView()
         smsCodeTextField.delegate = self
-    }
-    
-    private func setupUI() {
-        view.addSubview(iconImage)
-        view.addSubview(smsCodeTextField)
-        view.addSubview(loginButton)
+        setNotificationForKeyboard()
     }
     
     func verifyCodePressed(code: String) {
@@ -60,11 +55,74 @@ class SMSCodeViewController: UIViewController, UITextFieldDelegate {
                 let navVC = UINavigationController(rootViewController: mainVC)
                 navVC.modalPresentationStyle = .fullScreen
                 self?.present(navVC, animated: true)
-               
+                
             }
         }
     }
     
+    private func configureStackView() {
+        view.addSubview(stackView)
+        stackView.axis = .vertical
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 20
+        
+        stackView.addArrangedSubview(iconImage)
+        stackView.addArrangedSubview(smsCodeTextField)
+        stackView.addArrangedSubview(loginButton)
+        
+        setStackViewConstraints()
+    }
+    
+    private func setStackViewConstraints() {
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50).isActive = true
+        
+        NSLayoutConstraint.activate([
+            loginButton.heightAnchor.constraint(equalToConstant: 60),
+            smsCodeTextField.heightAnchor.constraint(equalToConstant: 30),
+            iconImage.heightAnchor.constraint(equalToConstant: 300),
+            loginButton.topAnchor.constraint(equalTo: smsCodeTextField.bottomAnchor, constant: 30),
+            smsCodeTextField.topAnchor.constraint(equalTo: iconImage.bottomAnchor, constant: 40)
+        ])
+    }
+    
+    private func gestureTap() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func handleTap() {
+        view.endEditing(true)
+    }
+    
+    func setNotificationForKeyboard() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height / 3.2
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+}
+
+extension SMSCodeViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         if let text = textField.text, !text.isEmpty {
@@ -72,31 +130,5 @@ class SMSCodeViewController: UIViewController, UITextFieldDelegate {
             verifyCodePressed(code: code)
         }
         return true
-    }
-    
-    func getTabBarVC() {
-        let tabBarVC = UITabBarController()
-        
-        let mainVC = MainViewController()
-        let profileVC = ProfileViewController()
-        let contactsVC = ContactsViewController()
-        let cartVC = CartViewController()
-        
-        mainVC.title = "Меню"
-        profileVC.title = "Профиль"
-        contactsVC.title = "Котнакты"
-        cartVC.title = "Корзина"
-        
-        tabBarVC.setViewControllers([mainVC, profileVC, contactsVC, cartVC], animated: false)
-        
-        guard let items = tabBarVC.tabBar.items else { return }
-        
-        for item in items {
-            item.image = UIImage(systemName: "house")
-        }
-        
-        tabBarVC.modalPresentationStyle = .fullScreen
-        
-        present(tabBarVC, animated: true)
     }
 }
