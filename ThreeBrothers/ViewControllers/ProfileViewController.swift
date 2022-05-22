@@ -26,6 +26,12 @@ class ProfileViewController: UIViewController {
     @objc func logOut() {
         AuthManager.shared.logOut()
         downLoadSheet()
+        switchToAnotherView()
+    }
+    
+    private func switchToAnotherView() {
+        let profileVC = ProfileViewController()
+        navigationController?.pushViewController(profileVC, animated: true)
     }
     
     func downLoadSheet() {

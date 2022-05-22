@@ -49,7 +49,10 @@ final class SMSCodeViewController: UIViewController {
     
     func verifyCodePressed(code: String) {
         AuthManager.shared.verifyCode(smsCode: code) { [weak self] success in
-            guard success else { return }
+            guard success else {
+                self?.showAlert(title: "Ошибка", message: "Некорректный код")
+                return
+            }
             DispatchQueue.main.async {
                 let mainVC = TabBarController()
                 let navVC = UINavigationController(rootViewController: mainVC)
@@ -132,3 +135,4 @@ extension SMSCodeViewController: UITextFieldDelegate {
         return true
     }
 }
+
