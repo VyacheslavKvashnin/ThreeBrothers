@@ -26,14 +26,11 @@ class ProfileViewController: UIViewController {
     @objc func logOut() {
         AuthManager.shared.logOut()
         downLoadSheet()
-        switchToAnotherView()
+        
+        
+        
     }
-    
-    private func switchToAnotherView() {
-        let profileVC = ProfileViewController()
-        navigationController?.pushViewController(profileVC, animated: true)
-    }
-    
+
     func downLoadSheet() {
         let alert = UIAlertController(title: "Вы действительно хотите выйти?", message: "", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Выйти", style: .default, handler: { [unowned self] _ in

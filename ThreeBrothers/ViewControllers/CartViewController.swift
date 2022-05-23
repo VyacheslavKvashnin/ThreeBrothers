@@ -26,7 +26,7 @@ final class CartViewController: UIViewController {
     }()
     
     @objc func pressedButton() {
-        print("cart")
+        tabBarController?.selectedIndex = 0
     }
 
     override func viewDidLoad() {
