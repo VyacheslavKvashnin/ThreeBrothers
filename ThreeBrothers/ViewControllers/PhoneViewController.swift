@@ -33,12 +33,6 @@ final class PhoneViewController: UIViewController {
         return button
     }()
     
-    @objc func pressedButton(sender: UIButton) {
-        guard let text = phoneTextField.text, !text.isEmpty else {
-            return
-        }
-        startAuthPressed(text: text)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +45,7 @@ final class PhoneViewController: UIViewController {
         //        assignBackground()
     }
     
-    //    func assignBackground(){
+    //   private func assignBackground(){
     //        let background = UIImage(named: "background")
     //
     //        var imageView: UIImageView!
@@ -63,6 +57,13 @@ final class PhoneViewController: UIViewController {
     //        view.addSubview(imageView)
     //        self.view.sendSubviewToBack(imageView)
     //    }
+    
+    @objc func pressedButton(sender: UIButton) {
+        guard let text = phoneTextField.text, !text.isEmpty else {
+            return
+        }
+        startAuthPressed(text: text)
+    }
     
     private func gestureTap() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
@@ -141,23 +142,4 @@ extension UIViewController {
     }
 }
 
-extension UIViewController {
-    func setNotificationForKeyboard() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height / 3.2
-            }
-        }
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
-    }
-}
+

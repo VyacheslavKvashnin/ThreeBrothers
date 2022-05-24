@@ -18,7 +18,7 @@ final class ProfileViewController: UIViewController {
     
     private func configureItems() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .undo ,
+            barButtonSystemItem: .close,
             target: self,
             action: #selector(logOut))
     }

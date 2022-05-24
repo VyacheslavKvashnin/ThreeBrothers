@@ -24,6 +24,7 @@
 		BDA66E082834E466002A0A22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDA66E072834E466002A0A22 /* Assets.xcassets */; };
 		BDA66E0B2834E466002A0A22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDA66E092834E466002A0A22 /* LaunchScreen.storyboard */; };
 		BDA66E182834FD96002A0A22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BDA66E172834FD96002A0A22 /* GoogleService-Info.plist */; };
+		BDC05309283D601B00BC6418 /* KeyboardHideExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC05308283D601B00BC6418 /* KeyboardHideExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		BDA66E0A2834E466002A0A22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BDA66E0C2834E466002A0A22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDA66E172834FD96002A0A22 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BDC05308283D601B00BC6418 /* KeyboardHideExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHideExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +101,8 @@
 				BD4DACFD283677090048BF72 /* ProfileViewController.swift */,
 				BD4DACFF2836772B0048BF72 /* ContactsViewController.swift */,
 				BD4DAD012836773E0048BF72 /* CartViewController.swift */,
-				BD4DAD032836815B0048BF72 /* TextFieldExtention.swift */,
-				BD4DACFB2836683C0048BF72 /* ButtonExtention.swift */,
 				BD2821222838EB2D00DBF1C2 /* AlertController.swift */,
+				BDC05307283D5FEF00BC6418 /* Extentions */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -136,6 +137,16 @@
 				BDA1DC172835025700E142CB /* AuthManager.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		BDC05307283D5FEF00BC6418 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				BD4DAD032836815B0048BF72 /* TextFieldExtention.swift */,
+				BD4DACFB2836683C0048BF72 /* ButtonExtention.swift */,
+				BDC05308283D601B00BC6418 /* KeyboardHideExtension.swift */,
+			);
+			path = Extentions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,6 +236,7 @@
 				BDA66DFF2834E465002A0A22 /* AppDelegate.swift in Sources */,
 				BD4DACFE283677090048BF72 /* ProfileViewController.swift in Sources */,
 				BD4DAD002836772B0048BF72 /* ContactsViewController.swift in Sources */,
+				BDC05309283D601B00BC6418 /* KeyboardHideExtension.swift in Sources */,
 				BDA1DC1A2835069F00E142CB /* SMSCodeViewController.swift in Sources */,
 				BD4DAD022836773E0048BF72 /* CartViewController.swift in Sources */,
 				BDA1DC1C283506AF00E142CB /* MainViewController.swift in Sources */,

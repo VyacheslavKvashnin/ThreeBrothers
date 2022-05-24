@@ -32,13 +32,6 @@ final class SMSCodeViewController: UIViewController {
         return button
     }()
     
-    @objc func pressedButton() {
-        guard let code = smsCodeTextField.text, !code.isEmpty else {
-            return
-        }
-        verifyCodePressed(code: code)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -47,7 +40,14 @@ final class SMSCodeViewController: UIViewController {
         setNotificationForKeyboard()
     }
     
-    func verifyCodePressed(code: String) {
+    @objc func pressedButton() {
+        guard let code = smsCodeTextField.text, !code.isEmpty else {
+            return
+        }
+        verifyCodePressed(code: code)
+    }
+    
+   private func verifyCodePressed(code: String) {
         AuthManager.shared.verifyCode(smsCode: code) { [weak self] success in
             guard success else {
                 self?.showAlert(title: "Ошибка", message: "Некорректный код")
