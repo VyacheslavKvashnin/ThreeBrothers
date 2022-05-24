@@ -18,15 +18,15 @@ final class ProfileViewController: UIViewController {
     
     private func configureItems() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .close,
-            target: self,
-            action: #selector(logOut))
+            image: UIImage(named: "person"),
+            style: .plain,
+            target: self, action: #selector(logOut))
     }
     
     @objc func logOut() {
         AuthManager.shared.logOut()
         downLoadSheet()
-        UserDefaults.standard.set(false, forKey: "status")
+      
     }
 
     func downLoadSheet() {
