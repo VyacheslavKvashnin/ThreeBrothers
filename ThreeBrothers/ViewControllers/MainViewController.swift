@@ -13,5 +13,6 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         title = "Меню"
         view.backgroundColor = .white
+//        print(UserDefaults.standard.bool(forKey: "status"))
     }
 }

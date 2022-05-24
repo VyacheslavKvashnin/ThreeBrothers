@@ -57,7 +57,8 @@ final class SMSCodeViewController: UIViewController {
                 let mainVC = TabBarController()
                 mainVC.modalPresentationStyle = .fullScreen
                 self?.present(mainVC, animated: true)
-                UserDefaults.standard.set(true, forKey: "LogIn")
+                UserDefaults.standard.set(true, forKey: "status")
+                NotificationCenter.default.post(name: NSNotification.Name("statusChange"), object: nil)
             }
         }
     }

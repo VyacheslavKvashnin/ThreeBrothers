@@ -20,10 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow()
         window.rootViewController = PhoneViewController()
         
-        if Auth.auth().currentUser == nil {
+        if !UserDefaults.standard.bool(forKey: "status") {
             let navVC = UINavigationController(rootViewController: PhoneViewController()) 
             window.rootViewController = navVC
         } else {
+            print(UserDefaults.standard.bool(forKey: "status"))
             window.rootViewController = TabBarController()
         }
         
