@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+final class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +26,6 @@ class ProfileViewController: UIViewController {
     @objc func logOut() {
         AuthManager.shared.logOut()
         downLoadSheet()
-        
-        
-        
     }
 
     func downLoadSheet() {
@@ -36,6 +33,7 @@ class ProfileViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Выйти", style: .default, handler: { [unowned self] _ in
             AuthManager.shared.logOut()
             dismiss(animated: true)
+            self.navigationController?.popViewController(animated: true)
         }))
         alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { _ in
             

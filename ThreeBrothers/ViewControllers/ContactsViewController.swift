@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ContactsViewController: UIViewController {
+final class ContactsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
