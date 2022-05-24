@@ -55,7 +55,6 @@ final class SMSCodeViewController: UIViewController {
             }
             DispatchQueue.main.async {
                 let mainVC = TabBarController()
-//                let navVC = UINavigationController(rootViewController: mainVC)
                 mainVC.modalPresentationStyle = .fullScreen
                 self?.present(mainVC, animated: true)
             }
