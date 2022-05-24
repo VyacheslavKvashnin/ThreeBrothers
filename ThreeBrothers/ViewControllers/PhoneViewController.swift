@@ -48,21 +48,21 @@ final class PhoneViewController: UIViewController {
         configureStackView()
         setNotificationForKeyboard()
         gestureTap()
-//        assignBackground()
+        //        assignBackground()
     }
     
-//    func assignBackground(){
-//        let background = UIImage(named: "background")
-//
-//        var imageView: UIImageView!
-//        imageView = UIImageView(frame: view.bounds)
-//        imageView.contentMode =  .scaleToFill
-//        imageView.clipsToBounds = true
-//        imageView.image = background
-//        imageView.center = view.center
-//        view.addSubview(imageView)
-//        self.view.sendSubviewToBack(imageView)
-//    }
+    //    func assignBackground(){
+    //        let background = UIImage(named: "background")
+    //
+    //        var imageView: UIImageView!
+    //        imageView = UIImageView(frame: view.bounds)
+    //        imageView.contentMode =  .scaleToFill
+    //        imageView.clipsToBounds = true
+    //        imageView.image = background
+    //        imageView.center = view.center
+    //        view.addSubview(imageView)
+    //        self.view.sendSubviewToBack(imageView)
+    //    }
     
     private func gestureTap() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
@@ -101,30 +101,6 @@ final class PhoneViewController: UIViewController {
         ])
     }
     
-    func setNotificationForKeyboard() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height / 3.2
-            }
-        }
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
     private func startAuthPressed(text: String) {
         let number = "+1\(text)"
         AuthManager.shared.startAuth(phoneNumber: number, completion: { [weak self] success in
@@ -139,6 +115,11 @@ final class PhoneViewController: UIViewController {
                 self?.navigationController?.pushViewController(smsCodeVC, animated: true)
             }
         })
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
 
@@ -160,3 +141,23 @@ extension UIViewController {
     }
 }
 
+extension UIViewController {
+    func setNotificationForKeyboard() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height / 3.2
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+}
