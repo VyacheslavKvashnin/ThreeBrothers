@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 final class ProfileViewController: UIViewController {
     
@@ -35,7 +36,6 @@ final class ProfileViewController: UIViewController {
     @objc func logOut() {
         AuthManager.shared.logOut()
         downLoadSheet()
-        
     }
     
     private func downLoadSheet() {
@@ -43,8 +43,7 @@ final class ProfileViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Выйти", style: .default, handler: { [unowned self] _ in
             AuthManager.shared.logOut()
             dismiss(animated: true)
-            UserDefaults.standard.set(false, forKey: "status")
-            NotificationCenter.default.post(name: NSNotification.Name("statusChange"), object: nil)
+            
         }))
         alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { _ in
             
