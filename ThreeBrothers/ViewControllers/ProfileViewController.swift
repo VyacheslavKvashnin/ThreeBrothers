@@ -8,7 +8,16 @@
 import UIKit
 
 final class ProfileViewController: UIViewController {
-
+    
+    private let textField: UITextField = {
+        let textField = UITextField()
+        textField.layer.cornerRadius = 10
+        textField.borderStyle = .none
+        textField.placeholder = "Enter Your Number"
+        textField.clearButtonMode = .whileEditing
+        return textField
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -26,9 +35,9 @@ final class ProfileViewController: UIViewController {
     @objc func logOut() {
         AuthManager.shared.logOut()
         downLoadSheet()
-      
+        
     }
-
+    
     private func downLoadSheet() {
         let alert = UIAlertController(title: "Вы действительно хотите выйти?", message: "", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Выйти", style: .default, handler: { [unowned self] _ in

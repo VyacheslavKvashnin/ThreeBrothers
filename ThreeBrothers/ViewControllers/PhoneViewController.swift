@@ -42,6 +42,7 @@ final class PhoneViewController: UIViewController {
         configureStackView()
         setNotificationForKeyboard()
         gestureTap()
+        addDoneButtonOnKeyboard()
         //        assignBackground()
     }
     
@@ -89,7 +90,7 @@ final class PhoneViewController: UIViewController {
     
     private func setStackViewConstraints() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80).isActive = true
+        stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
         stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50).isActive = true
         stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50).isActive = true
         
@@ -118,6 +119,23 @@ final class PhoneViewController: UIViewController {
         })
     }
     
+   private func addDoneButtonOnKeyboard() {
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
+        doneToolbar.barStyle = .default
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Далее", style: .done, target: self, action: #selector(pressedButton))
+        
+        var items = [UIBarButtonItem]()
+        items.append(flexSpace)
+        items.append(done)
+        
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+        
+        self.phoneTextField.inputAccessoryView = doneToolbar
+    }
+    
     deinit {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -141,5 +159,3 @@ extension UIViewController {
         present(alert, animated: true, completion: nil)
     }
 }
-
-

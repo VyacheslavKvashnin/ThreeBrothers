@@ -38,6 +38,7 @@ final class SMSCodeViewController: UIViewController {
         configureStackView()
         smsCodeTextField.delegate = self
         setNotificationForKeyboard()
+        addDoneButtonOnKeyboard()
     }
     
     @objc func pressedButton() {
@@ -47,7 +48,7 @@ final class SMSCodeViewController: UIViewController {
         verifyCodePressed(code: code)
     }
     
-   private func verifyCodePressed(code: String) {
+    private func verifyCodePressed(code: String) {
         AuthManager.shared.verifyCode(smsCode: code) { [weak self] success in
             guard success else {
                 self?.showAlert(title: "Ошибка", message: "Некорректный код")
@@ -76,7 +77,7 @@ final class SMSCodeViewController: UIViewController {
     
     private func setStackViewConstraints() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80).isActive = true
+        stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
         stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50).isActive = true
         stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50).isActive = true
         
@@ -96,6 +97,23 @@ final class SMSCodeViewController: UIViewController {
     
     @objc func handleTap() {
         view.endEditing(true)
+    }
+    
+    private func addDoneButtonOnKeyboard() {
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
+        doneToolbar.barStyle = .default
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Далее", style: .done, target: self, action: #selector(pressedButton))
+        
+        var items = [UIBarButtonItem]()
+        items.append(flexSpace)
+        items.append(done)
+        
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+        
+        self.smsCodeTextField.inputAccessoryView = doneToolbar
     }
     
     deinit {
