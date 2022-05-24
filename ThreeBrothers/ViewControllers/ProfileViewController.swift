@@ -18,7 +18,7 @@ final class ProfileViewController: UIViewController {
     
     private func configureItems() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(named: "person"),
+            image: UIImage(systemName: "rectangle.lefthalf.inset.filled.arrow.left"),
             style: .plain,
             target: self, action: #selector(logOut))
     }
@@ -29,7 +29,7 @@ final class ProfileViewController: UIViewController {
       
     }
 
-    func downLoadSheet() {
+    private func downLoadSheet() {
         let alert = UIAlertController(title: "Вы действительно хотите выйти?", message: "", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Выйти", style: .default, handler: { [unowned self] _ in
             AuthManager.shared.logOut()
