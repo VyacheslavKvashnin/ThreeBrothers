@@ -33,7 +33,6 @@ final class ProfileViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Выйти", style: .default, handler: { [unowned self] _ in
             AuthManager.shared.logOut()
             dismiss(animated: true)
-            self.navigationController?.popViewController(animated: true)
         }))
         alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { _ in
             

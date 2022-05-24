@@ -57,6 +57,7 @@ final class SMSCodeViewController: UIViewController {
                 let mainVC = TabBarController()
                 mainVC.modalPresentationStyle = .fullScreen
                 self?.present(mainVC, animated: true)
+                UserDefaults.standard.set(true, forKey: "LogIn")
             }
         }
     }
