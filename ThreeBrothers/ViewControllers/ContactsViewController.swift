@@ -44,6 +44,7 @@ final class ContactsViewController: UIViewController, MKMapViewDelegate {
     
     private func addCustomPin() {
         let pin = MKPointAnnotation()
+        pin.coordinate = initialLocation
         pin.title = "3 Brata"
         pin.subtitle = "Хлебозаводская 7В"
         map.addAnnotation(pin)
@@ -53,6 +54,15 @@ final class ContactsViewController: UIViewController, MKMapViewDelegate {
         guard !(annotation is MKUserLocation) else { return nil }
         
         var annotationView = map.dequeueReusableAnnotationView(withIdentifier: "custom")
+        
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "custom")
+            annotationView?.canShowCallout = true
+            
+        } else {
+            annotationView?.annotation = annotation
+        }
+        annotationView?.image = UIImage(systemName: "mappin")
         
         return annotationView
     }
