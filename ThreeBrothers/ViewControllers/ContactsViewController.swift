@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 struct MyAnnotationItem: Identifiable {
     let coordinate: CLLocationCoordinate2D
@@ -38,6 +39,7 @@ final class ContactsViewController: UIViewController {
         let initialLocation = CLLocation(latitude: 55.178521, longitude: 61.359672)
         let mapView = MKMapView()
         mapView.centerLocation(initialLocation)
+    
         view = mapView
     }
 }
