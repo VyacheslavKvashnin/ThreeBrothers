@@ -45,9 +45,7 @@ final class ProfileViewController: UIViewController {
             dismiss(animated: true)
             
         }))
-        alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { _ in
-            
-        }))
+        alert.addAction(UIAlertAction(title: "Отмена", style: .cancel))
         present(alert, animated: true)
     }
 }

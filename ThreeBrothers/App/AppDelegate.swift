@@ -24,8 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let navVC = UINavigationController(rootViewController: PhoneViewController()) 
             window.rootViewController = navVC
         } else {
-            let navVC = UINavigationController(rootViewController: TabBarController())
-            window.rootViewController = navVC
+            window.rootViewController = TabBarController()
         }
         
         window.makeKeyAndVisible()
