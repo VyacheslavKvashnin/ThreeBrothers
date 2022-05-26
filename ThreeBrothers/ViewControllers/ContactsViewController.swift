@@ -10,15 +10,11 @@ import MapKit
 
 final class ContactsViewController: UIViewController {
     
-    let annotationItems: [CLLocationCoordinate2D] = [
-        CLLocationCoordinate2D(latitude: 55.239284, longitude: 61.418294),
-        CLLocationCoordinate2D(latitude: 55.163552, longitude: 61.434496)
-        //        MyAnnotationItem(coordinate: CLLocationCoordinate2D(latitude: 55.178521, longitude: 61.359672))
-    ]
-    
     let mapView = MKMapView()
     let initialLocation = CLLocationCoordinate2D(latitude: 55.159995, longitude: 61.402492)
     let breadPin = CLLocationCoordinate2D(latitude: 55.239284, longitude: 61.418294)
+    let gorkyPin = CLLocationCoordinate2D(latitude: 55.163552, longitude: 61.434496)
+    let brotherPin = CLLocationCoordinate2D(latitude: 55.178521, longitude: 61.359672)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,15 +28,10 @@ final class ContactsViewController: UIViewController {
         
         mapView.centerToLocation(initialLocation)
         constrainingCamera()
-        addCustomPin()
-    }
-    
-    private func addCustomPin() {
-        let pin = MKPointAnnotation()
-        pin.coordinate = breadPin
-        pin.title = "3 Brata"
-        pin.subtitle = "Хлебозаводская 47/1"
-        mapView.addAnnotation(pin)
+
+        addCustomPin(coordinate: brotherPin, subtitle: "Братьев Кашириных 95/1")
+        addCustomPin(coordinate: breadPin, subtitle: "Хлебозаводская 47/1")
+        addCustomPin(coordinate: gorkyPin, subtitle: "Артиллерийская 117 к4")
     }
     
     private func constrainingCamera() {
@@ -84,5 +75,15 @@ extension ContactsViewController: MKMapViewDelegate {
         }
         annotationView?.image = UIImage(named: "burgerMini")
         return annotationView
+    }
+}
+
+extension ContactsViewController {
+    private func addCustomPin(coordinate: CLLocationCoordinate2D, subtitle: String) {
+        let pin = MKPointAnnotation()
+        pin.coordinate = coordinate
+        pin.title = "3 Brata"
+        pin.subtitle = subtitle
+        mapView.addAnnotation(pin)
     }
 }
