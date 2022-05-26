@@ -10,11 +10,25 @@ import FirebaseAuth
 
 final class ProfileViewController: UIViewController {
     
-    private let textField: UITextField = {
-        let textField = UITextField()
-        textField.layer.cornerRadius = 10
-        textField.borderStyle = .none
-        textField.placeholder = "Enter Your Number"
+    private let stackView = UIStackView()
+    
+    private let nameTextField: UITextField = {
+        let textField = UITextField.customTextField()
+        textField.placeholder = "Ваше имя"
+        textField.clearButtonMode = .whileEditing
+        return textField
+    }()
+    
+    private let phoneTextField: UITextField = {
+        let textField = UITextField.customTextField()
+        textField.placeholder = "Ваш номер телефона"
+        textField.clearButtonMode = .whileEditing
+        return textField
+    }()
+    
+    private let emailTextField: UITextField = {
+        let textField = UITextField.customTextField()
+        textField.placeholder = "Ваш имэил"
         textField.clearButtonMode = .whileEditing
         return textField
     }()
@@ -24,6 +38,28 @@ final class ProfileViewController: UIViewController {
         view.backgroundColor = .white
         title = "Профиль"
         configureItems()
+        
+        configureStackView()
+    }
+    
+    private func configureStackView() {
+        view.addSubview(stackView)
+        stackView.axis = .vertical
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 20
+        
+        stackView.addArrangedSubview(nameTextField)
+        stackView.addArrangedSubview(phoneTextField)
+        stackView.addArrangedSubview(emailTextField)
+        
+        setStackViewConstraints()
+    }
+    
+    private func setStackViewConstraints() {
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50).isActive = true
     }
     
     private func configureItems() {
@@ -44,7 +80,7 @@ final class ProfileViewController: UIViewController {
             AuthManager.shared.logOut()
             dismiss(animated: true)
         }))
-        alert.addAction(UIAlertAction(title: "Отмена", style: .destructive, handler: { _ in
+        alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { _ in
             
         }))
         present(alert, animated: true)
