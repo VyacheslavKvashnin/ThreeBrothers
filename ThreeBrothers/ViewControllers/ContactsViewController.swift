@@ -7,52 +7,74 @@
 
 import UIKit
 import MapKit
-import CoreLocation
 
-
-
-final class ContactsViewController: UIViewController, MKMapViewDelegate {
+final class ContactsViewController: UIViewController {
     
     let annotationItems: [CLLocationCoordinate2D] = [
-CLLocationCoordinate2D(latitude: 55.239284, longitude: 61.418294),
-CLLocationCoordinate2D(latitude: 55.163552, longitude: 61.434496)
-//        MyAnnotationItem(coordinate: CLLocationCoordinate2D(latitude: 55.178521, longitude: 61.359672))
+        CLLocationCoordinate2D(latitude: 55.239284, longitude: 61.418294),
+        CLLocationCoordinate2D(latitude: 55.163552, longitude: 61.434496)
+        //        MyAnnotationItem(coordinate: CLLocationCoordinate2D(latitude: 55.178521, longitude: 61.359672))
     ]
     
-    let map = MKMapView()
-    let initialLocation = CLLocationCoordinate2D(latitude: 55.190524, longitude: 61.388399)
-
+    let mapView = MKMapView()
+    let initialLocation = CLLocationCoordinate2D(latitude: 55.159995, longitude: 61.402492)
+    let breadPin = CLLocationCoordinate2D(latitude: 55.239284, longitude: 61.418294)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "Контакты"
         
-        view.addSubview(map)
-        map.frame = view.bounds
+        view.addSubview(mapView)
+        mapView.frame = view.bounds
         
-        map.delegate = self
+        mapView.delegate = self
         
-        map.setRegion(MKCoordinateRegion(
-            center: initialLocation,
-            span: MKCoordinateSpan(
-                latitudeDelta: 0.1,
-                longitudeDelta: 0.1)),
-                      animated: false)
-        
+        mapView.centerToLocation(initialLocation)
+        constrainingCamera()
         addCustomPin()
     }
     
     private func addCustomPin() {
         let pin = MKPointAnnotation()
-        pin.coordinate = initialLocation
+        pin.coordinate = breadPin
         pin.title = "3 Brata"
-        pin.subtitle = "Хлебозаводская 7В"
-        map.addAnnotation(pin)
+        pin.subtitle = "Хлебозаводская 47/1"
+        mapView.addAnnotation(pin)
     }
     
+    private func constrainingCamera() {
+        let chelyabinskCenter = CLLocation(latitude: 55.159995, longitude: 61.402492)
+        let region = MKCoordinateRegion(
+            center: chelyabinskCenter.coordinate,
+            latitudinalMeters: 50000,
+            longitudinalMeters: 60000)
+        mapView.setCameraBoundary(
+            MKMapView.CameraBoundary(coordinateRegion: region),
+            animated: true)
+        
+        let zoomRange = MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 200000)
+        mapView.setCameraZoomRange(zoomRange, animated: true)
+    }
+}
+
+private extension MKMapView {
+    func centerToLocation(
+        _ location: CLLocationCoordinate2D,
+        regionRadius: CLLocationDistance = 10500
+    ) {
+        let coordinateRegion = MKCoordinateRegion(
+            center: location,
+            latitudinalMeters: regionRadius,
+            longitudinalMeters: regionRadius)
+        setRegion(coordinateRegion, animated: true)
+    }
+}
+
+extension ContactsViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !(annotation is MKUserLocation) else { return nil }
-        var annotationView = map.dequeueReusableAnnotationView(withIdentifier: "custom")
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "custom")
         
         if annotationView == nil {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "custom")
@@ -60,7 +82,7 @@ CLLocationCoordinate2D(latitude: 55.163552, longitude: 61.434496)
         } else {
             annotationView?.annotation = annotation
         }
-        annotationView?.image = UIImage(systemName: "mappin")
+        annotationView?.image = UIImage(named: "burgerMini")
         return annotationView
     }
 }
