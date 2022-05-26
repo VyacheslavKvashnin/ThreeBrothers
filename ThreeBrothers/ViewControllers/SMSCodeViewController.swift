@@ -17,9 +17,7 @@ final class SMSCodeViewController: UIViewController {
     }()
     
     private let smsCodeTextField: UITextField = {
-        let textField = UITextField()
-        textField.layer.cornerRadius = 10
-        textField.borderStyle = .roundedRect
+        let textField = UITextField.customTextField()
         textField.placeholder = "Enter SMS Code"
         textField.keyboardType = .asciiCapableNumberPad
         textField.returnKeyType = .continue

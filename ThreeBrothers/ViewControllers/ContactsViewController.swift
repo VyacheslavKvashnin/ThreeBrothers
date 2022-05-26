@@ -16,6 +16,12 @@ final class ContactsViewController: UIViewController {
     let gorkyPin = CLLocationCoordinate2D(latitude: 55.163552, longitude: 61.434496)
     let brotherPin = CLLocationCoordinate2D(latitude: 55.178521, longitude: 61.359672)
     
+    private let buttonCall: UIButton = {
+        let button = UIButton.customButton()
+        button.setTitle("Позвонить", for: .normal)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -32,6 +38,9 @@ final class ContactsViewController: UIViewController {
         addCustomPin(coordinate: brotherPin, subtitle: "Братьев Кашириных 95/1")
         addCustomPin(coordinate: breadPin, subtitle: "Хлебозаводская 47/1")
         addCustomPin(coordinate: gorkyPin, subtitle: "Артиллерийская 117 к4")
+        
+//        view.addSubview(buttonCall)
+        setButtonCallConstraints()
     }
     
     private func constrainingCamera() {
@@ -46,6 +55,14 @@ final class ContactsViewController: UIViewController {
         
         let zoomRange = MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 200000)
         mapView.setCameraZoomRange(zoomRange, animated: true)
+    }
+    
+    private func setButtonCallConstraints() {
+        view.addSubview(buttonCall)
+        buttonCall.translatesAutoresizingMaskIntoConstraints = false
+        buttonCall.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50).isActive = true
+        buttonCall.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50).isActive = true
+        buttonCall.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -70).isActive = true
     }
 }
 

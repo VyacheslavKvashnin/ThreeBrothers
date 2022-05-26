@@ -18,12 +18,9 @@ final class PhoneViewController: UIViewController {
     }()
     
     private let phoneTextField: UITextField = {
-        let textField = UITextField()
-        textField.layer.cornerRadius = 10
-        textField.borderStyle = .none
+        let textField = UITextField.customTextField()
         textField.placeholder = "Enter Your Number"
         textField.keyboardType = .asciiCapableNumberPad
-        textField.clearButtonMode = .whileEditing
         return textField
     }()
     
