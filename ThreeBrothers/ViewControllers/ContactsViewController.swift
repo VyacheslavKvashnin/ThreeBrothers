@@ -13,11 +13,11 @@ import CoreLocation
 
 final class ContactsViewController: UIViewController, MKMapViewDelegate {
     
-//    let annotationItems: [MyAnnotationItem] = [
-//        MyAnnotationItem(coordinate: CLLocationCoordinate2D(latitude: 55.239284, longitude: 61.418294)),
-//        MyAnnotationItem(coordinate: CLLocationCoordinate2D(latitude: 55.163552, longitude: 61.434496)),
+    let annotationItems: [CLLocationCoordinate2D] = [
+CLLocationCoordinate2D(latitude: 55.239284, longitude: 61.418294),
+CLLocationCoordinate2D(latitude: 55.163552, longitude: 61.434496)
 //        MyAnnotationItem(coordinate: CLLocationCoordinate2D(latitude: 55.178521, longitude: 61.359672))
-//    ]
+    ]
     
     let map = MKMapView()
     let initialLocation = CLLocationCoordinate2D(latitude: 55.190524, longitude: 61.388399)
@@ -52,18 +52,15 @@ final class ContactsViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !(annotation is MKUserLocation) else { return nil }
-        
         var annotationView = map.dequeueReusableAnnotationView(withIdentifier: "custom")
         
         if annotationView == nil {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "custom")
             annotationView?.canShowCallout = true
-            
         } else {
             annotationView?.annotation = annotation
         }
         annotationView?.image = UIImage(systemName: "mappin")
-        
         return annotationView
     }
 }
