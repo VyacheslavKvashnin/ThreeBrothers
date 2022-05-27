@@ -9,9 +9,9 @@ import UIKit
 import MapKit
 
 final class ContactsViewController: UIViewController {
-    
+    //55.194372, 61.408499
     let mapView = MKMapView()
-    let initialLocation = CLLocationCoordinate2D(latitude: 55.159995, longitude: 61.402492)
+    let initialLocation = CLLocationCoordinate2D(latitude: 55.194372, longitude: 61.408499)
     let breadPin = CLLocationCoordinate2D(latitude: 55.239284, longitude: 61.418294)
     let gorkyPin = CLLocationCoordinate2D(latitude: 55.163552, longitude: 61.434496)
     let brotherPin = CLLocationCoordinate2D(latitude: 55.178521, longitude: 61.359672)
