@@ -15,8 +15,6 @@ final class ProfileViewController: UIViewController {
     private let nameTextField: UITextField = {
         let textField = UITextField.customTextField()
         textField.placeholder = "Ваше имя"
-        textField.layer.borderWidth = 2
-        textField.layer.masksToBounds = true
         textField.clearButtonMode = .whileEditing
         return textField
     }()
