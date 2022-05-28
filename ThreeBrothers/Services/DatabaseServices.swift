@@ -18,4 +18,6 @@ class DatabaseServices {
     }
     
     private init() {}
+    
+    func setUser(user: User, completion: @escaping(Result<>))
 }
