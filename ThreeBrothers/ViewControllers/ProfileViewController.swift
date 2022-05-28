@@ -51,19 +51,25 @@ final class ProfileViewController: UIViewController {
         
         nameTextField.delegate = self
         
-        let docRef = database.document("Users")
-        docRef.getDocument { snap, error in
-            guard let data = snap?.data(), error == nil else { return }
-            
-            print(data)
-        }
+        saveData(text: "TeXT")
+        
+//        let docRef = database.document("users")
+//        docRef.getDocument { [weak self] snap, error in
+//            guard let data = snap?.data(), error == nil else { return }
+//
+//            guard let text = data["userName"] as? String else { return }
+//
+//            DispatchQueue.main.async {
+//                self?.labelName.text = text
+//            }
+//        }
         configureItems()
         
         configureStackView()
     }
     
     private func saveData(text: String) {
-        let docRef = database.document("Users")
+        let docRef = database.document("users")
         docRef.setData(["userName": text])
     }
     
