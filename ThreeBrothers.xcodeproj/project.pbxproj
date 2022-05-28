@@ -26,6 +26,7 @@
 		BDEA571D2841524D00F8983F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BDEA571C2841524D00F8983F /* FirebaseAuth */; };
 		BDEA571F2841524D00F8983F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = BDEA571E2841524D00F8983F /* FirebaseFirestore */; };
 		BDEA57212841524D00F8983F /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = BDEA57202841524D00F8983F /* FirebaseStorage */; };
+		BDEA572328428E7A00F8983F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEA572228428E7A00F8983F /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		BDA66E0C2834E466002A0A22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDA66E172834FD96002A0A22 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BDC05308283D601B00BC6418 /* KeyboardHideExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHideExtension.swift; sourceTree = "<group>"; };
+		BDEA572228428E7A00F8983F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 		BDA66E152834EA60002A0A22 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BDEA572228428E7A00F8983F /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				BD4DAD0828368A3F0048BF72 /* TabBarController.swift in Sources */,
 				BD2821232838EB2D00DBF1C2 /* AlertController.swift in Sources */,
 				BD4DACFC2836683C0048BF72 /* ButtonExtention.swift in Sources */,
+				BDEA572328428E7A00F8983F /* User.swift in Sources */,
 				BDA66DFF2834E465002A0A22 /* AppDelegate.swift in Sources */,
 				BD4DACFE283677090048BF72 /* ProfileViewController.swift in Sources */,
 				BD4DAD002836772B0048BF72 /* ContactsViewController.swift in Sources */,

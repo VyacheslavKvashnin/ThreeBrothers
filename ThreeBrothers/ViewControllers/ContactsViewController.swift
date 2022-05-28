@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 
 final class ContactsViewController: UIViewController {
-    //55.194372, 61.408499
+
     let mapView = MKMapView()
     let initialLocation = CLLocationCoordinate2D(latitude: 55.194372, longitude: 61.408499)
     let breadPin = CLLocationCoordinate2D(latitude: 55.239284, longitude: 61.418294)
@@ -39,7 +39,6 @@ final class ContactsViewController: UIViewController {
         addCustomPin(coordinate: breadPin, subtitle: "Хлебозаводская 47/1")
         addCustomPin(coordinate: gorkyPin, subtitle: "Артиллерийская 117 к4")
         
-//        view.addSubview(buttonCall)
         setButtonCallConstraints()
     }
     
