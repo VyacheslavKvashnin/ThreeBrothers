@@ -15,6 +15,14 @@ final class ProfileViewController: UIViewController {
     
     private let stackView = UIStackView()
     
+    private let labelName: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.text = "Example"
+        return label
+    }()
+    
     private let nameTextField: UITextField = {
         let textField = UITextField.customTextField()
         textField.placeholder = "Ваше имя"
@@ -45,13 +53,14 @@ final class ProfileViewController: UIViewController {
         configureStackView()
         
         let docRef = database.document("Users")
-        docRef.getDocument { snap, error in
-            guard let data = snap?.data(), error == nil else { return }
-        }
-        
+//        docRef.getDocument { snap, error in
+//            guard let data = snap?.data(), error == nil else { return }
+//            
+//            print(data)
+//        }
     }
     
-    private func writeData(text: String) {
+    private func saveData(text: String) {
         let docRef = database.document("Users")
         docRef.setData(["userName": text])
     }
@@ -62,6 +71,7 @@ final class ProfileViewController: UIViewController {
         stackView.distribution = .equalSpacing
         stackView.spacing = 20
         
+        stackView.addArrangedSubview(labelName)
         stackView.addArrangedSubview(nameTextField)
         stackView.addArrangedSubview(phoneTextField)
         stackView.addArrangedSubview(emailTextField)
@@ -108,5 +118,14 @@ extension UITextField {
         bottomLine.backgroundColor = UIColor.black.cgColor
         borderStyle = .none
         layer.addSublayer(bottomLine)
+    }
+}
+
+extension ProfileViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let text = nameTextField.text, !text.isEmpty {
+            saveData(text: text)
+        }
+        return true
     }
 }
