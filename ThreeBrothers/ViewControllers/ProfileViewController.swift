@@ -48,16 +48,18 @@ final class ProfileViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "Профиль"
+        
+        nameTextField.delegate = self
+        
+        let docRef = database.document("Users")
+        docRef.getDocument { snap, error in
+            guard let data = snap?.data(), error == nil else { return }
+            
+            print(data)
+        }
         configureItems()
         
         configureStackView()
-        
-        let docRef = database.document("Users")
-//        docRef.getDocument { snap, error in
-//            guard let data = snap?.data(), error == nil else { return }
-//            
-//            print(data)
-//        }
     }
     
     private func saveData(text: String) {
