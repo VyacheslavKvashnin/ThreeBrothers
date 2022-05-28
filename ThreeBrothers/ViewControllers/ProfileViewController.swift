@@ -7,8 +7,11 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 final class ProfileViewController: UIViewController {
+    
+    private let database = Firestore.firestore()
     
     private let stackView = UIStackView()
     
@@ -40,6 +43,17 @@ final class ProfileViewController: UIViewController {
         configureItems()
         
         configureStackView()
+        
+        let docRef = database.document("Users")
+        docRef.getDocument { snap, error in
+            guard let data = snap?.data(), error == nil else { return }
+        }
+        
+    }
+    
+    private func writeData(text: String) {
+        let docRef = database.document("Users")
+        docRef.setData(["userName": text])
     }
     
     private func configureStackView() {
