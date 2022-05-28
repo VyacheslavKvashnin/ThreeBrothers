@@ -49,29 +49,11 @@ final class ProfileViewController: UIViewController {
         view.backgroundColor = .white
         title = "Профиль"
         
-        nameTextField.delegate = self
-        
-        saveData(text: "TeXT")
-        
-//        let docRef = database.document("users")
-//        docRef.getDocument { [weak self] snap, error in
-//            guard let data = snap?.data(), error == nil else { return }
-//
-//            guard let text = data["userName"] as? String else { return }
-//
-//            DispatchQueue.main.async {
-//                self?.labelName.text = text
-//            }
-//        }
         configureItems()
         
         configureStackView()
     }
-    
-    private func saveData(text: String) {
-        let docRef = database.document("users")
-        docRef.setData(["userName": text])
-    }
+
     
     private func configureStackView() {
         view.addSubview(stackView)
@@ -129,11 +111,3 @@ extension UITextField {
     }
 }
 
-extension ProfileViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let text = nameTextField.text, !text.isEmpty {
-            saveData(text: text)
-        }
-        return true
-    }
-}
