@@ -25,9 +25,9 @@ class AuthManager {
         }
     }
     
-    func verifyCode(smsCode: String, completion: @escaping(Bool) -> Void) {
+    func verifyCode(smsCode: String, completion: @escaping(Result<User, Error>) -> Void) {
         guard let verificationId = verificationId else {
-            completion(false)
+            completion(.failure("error" as! Error))
             return
         }
         let credential = PhoneAuthProvider.provider().credential(
@@ -36,10 +36,28 @@ class AuthManager {
         
         auth.signIn(with: credential) { result, error in
             guard result != nil, error == nil else {
-                completion(false)
+                completion(.failure("error" as! Error))
                 return
             }
-            completion(true)
+            let user = User(
+                id: result?.user.uid ?? "",
+                userName: "Pop",
+                email: "UUuuu@mail.ru",
+                phone: "908",
+                date: Data()
+            )
+            
+            DatabaseServices.shared.setUser(user: user) { resultDB in
+                switch resultDB {
+                    
+                case .success(_):
+                    completion(.success(user))
+                    
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+            
         }
     }
     
