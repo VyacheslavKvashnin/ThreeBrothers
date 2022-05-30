@@ -48,10 +48,10 @@ final class SMSCodeViewController: UIViewController {
     
     private func verifyCodePressed(code: String) {
         AuthManager.shared.verifyCode(smsCode: code) { [weak self] success in
-            guard success else {
-                self?.showAlert(title: "Ошибка", message: "Некорректный код")
-                return
-            }
+//            guard success else {
+//                self?.showAlert(title: "Ошибка", message: "Некорректный код")
+//                return
+//            }
             DispatchQueue.main.async {
                 let mainVC = TabBarController()
                 mainVC.modalPresentationStyle = .fullScreen
