@@ -53,6 +53,7 @@ final class ProfileViewController: UIViewController {
     
     @objc func saveData() {
         print("Save Data")
+        
     }
     
     override func viewDidLoad() {
@@ -65,6 +66,12 @@ final class ProfileViewController: UIViewController {
         configureStackView()
     }
 
+    func saveDataUser(user: User) {
+       let db = Firestore.firestore()
+        db.document(user.id).setData([
+            "phone": phoneTextField.text ?? ""
+        ])
+    }
     
     private func configureStackView() {
         view.addSubview(stackView)
