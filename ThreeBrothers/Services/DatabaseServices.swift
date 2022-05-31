@@ -28,4 +28,12 @@ class DatabaseServices {
             }
         }
     }
+    
+    func saveDataUser(user: User, completion: @escaping(Result<User, Error>) -> Void) {
+        userRef.document(user.id).setData([
+            "userName": user.userName,
+            "phone": user.phone,
+            "email": user.email
+        ])
+    }
 }
