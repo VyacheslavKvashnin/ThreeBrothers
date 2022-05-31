@@ -36,14 +36,14 @@ class AuthManager {
         
         auth.signIn(with: credential) { result, error in
             guard result != nil, error == nil else {
-                completion(.failure("error" as! Error))
+                
                 return
             }
             let user = User(
                 id: result?.user.uid ?? "",
-                userName: "Pop",
-                email: "UUuuu@mail.ru",
-                phone: "908",
+                userName: "",
+                email: "",
+                phone: "",
                 date: Data()
             )
             

@@ -19,7 +19,7 @@ final class PhoneViewController: UIViewController {
     
     private let phoneTextField: UITextField = {
         let textField = UITextField.customTextField()
-        textField.placeholder = "Enter Your Number"
+        textField.placeholder = "Введите номер телефона"
         textField.keyboardType = .asciiCapableNumberPad
         return textField
     }()
@@ -104,7 +104,7 @@ final class PhoneViewController: UIViewController {
         let number = "+1\(text)"
         AuthManager.shared.startAuth(phoneNumber: number, completion: { [weak self] success in
             guard success else {
-                self?.showAlert(title: "Ошибка", message: "Некорректный телефонный номер")
+                self?.showAlert(title: "Ошибка", message: "Некорректный номер телефона")
                 return
             }
             DispatchQueue.main.async {
