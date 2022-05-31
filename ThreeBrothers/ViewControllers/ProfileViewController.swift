@@ -44,6 +44,17 @@ final class ProfileViewController: UIViewController {
         return textField
     }()
     
+    private let saveButton: UIButton = {
+        let button = UIButton.customButton()
+        button.setTitle("Сохранить", for: .normal)
+        button.addTarget(self, action: #selector(saveData), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func saveData() {
+        print("Save Data")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -65,6 +76,7 @@ final class ProfileViewController: UIViewController {
         stackView.addArrangedSubview(nameTextField)
         stackView.addArrangedSubview(phoneTextField)
         stackView.addArrangedSubview(emailTextField)
+        stackView.addArrangedSubview(saveButton)
         
         setStackViewConstraints()
     }
