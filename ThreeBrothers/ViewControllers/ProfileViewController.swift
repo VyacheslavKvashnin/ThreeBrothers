@@ -11,8 +11,6 @@ import FirebaseFirestore
 
 final class ProfileViewController: UIViewController {
     
-    var user: User!
-    
     private let db = Firestore.firestore()
     
     private let stackView = UIStackView()
