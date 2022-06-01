@@ -55,14 +55,7 @@ final class ProfileViewController: UIViewController {
     
     @objc func saveData() {
         print("Save Data")
-        DatabaseServices.shared.getUser { result in
-            switch result {
-            case .success(let users):
-                self.user = users
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+        
     }
     
     override func viewDidLoad() {
@@ -71,7 +64,6 @@ final class ProfileViewController: UIViewController {
         title = "Профиль"
         
         configureItems()
-        
         configureStackView()
     }
     
@@ -105,7 +97,6 @@ final class ProfileViewController: UIViewController {
     }
     
     @objc func logOut() {
-        AuthManager.shared.logOut()
         downLoadSheet()
     }
     
