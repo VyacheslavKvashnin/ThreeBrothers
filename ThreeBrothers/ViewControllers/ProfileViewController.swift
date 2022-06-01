@@ -55,7 +55,14 @@ final class ProfileViewController: UIViewController {
     
     @objc func saveData() {
         print("Save Data")
-       
+        DatabaseServices.shared.getUser { result in
+            switch result {
+            case .success(let user):
+                self.user = user
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -66,6 +73,8 @@ final class ProfileViewController: UIViewController {
         configureItems()
         
         configureStackView()
+        
+       
     }
     
     private func configureStackView() {
