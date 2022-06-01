@@ -57,8 +57,8 @@ final class ProfileViewController: UIViewController {
         print("Save Data")
         DatabaseServices.shared.getUser { result in
             switch result {
-            case .success(let user):
-                self.user = user
+            case .success(let users):
+                self.user = users
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -73,8 +73,6 @@ final class ProfileViewController: UIViewController {
         configureItems()
         
         configureStackView()
-        
-       
     }
     
     private func configureStackView() {
