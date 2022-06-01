@@ -11,7 +11,9 @@ import FirebaseFirestore
 
 final class ProfileViewController: UIViewController {
     
-    private let database = Firestore.firestore()
+    var user: User!
+    
+    private let db = Firestore.firestore()
     
     private let stackView = UIStackView()
     
@@ -53,7 +55,7 @@ final class ProfileViewController: UIViewController {
     
     @objc func saveData() {
         print("Save Data")
-        
+       
     }
     
     override func viewDidLoad() {
@@ -64,13 +66,6 @@ final class ProfileViewController: UIViewController {
         configureItems()
         
         configureStackView()
-    }
-
-    func saveDataUser(user: User) {
-       let db = Firestore.firestore()
-        db.document(user.id).setData([
-            "phone": phoneTextField.text ?? ""
-        ])
     }
     
     private func configureStackView() {
