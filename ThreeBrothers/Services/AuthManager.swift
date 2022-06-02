@@ -41,10 +41,10 @@ class AuthManager {
             }
             let user = User(
                 id: result?.user.uid ?? "",
-                userName: "",
+                userName: "pop",
                 email: "",
-                phone: "",
-                date: Data()
+                phone: ""
+//                date: ""
             )
             
             DatabaseServices.shared.setUser(user: user) { resultDB in

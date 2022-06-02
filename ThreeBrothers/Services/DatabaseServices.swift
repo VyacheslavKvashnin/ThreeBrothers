@@ -30,8 +30,18 @@ final class DatabaseServices {
         db.collection("users").getDocuments { snap, error in
             guard error == nil else { return }
             
-            if let user = snap?.documents {
-                print(user)
+            if let users = snap?.documents {
+                for user in users {
+//                    let date = user["date"] as! String
+                    let email = user["email"] as! String
+                    let id = user["id"] as! String
+                    let phone = user["phone"] as! String
+                    let userName = user["userName"] as! String
+                    
+                    let user = User(id: id, userName: userName, email: email, phone: phone)
+                    
+                    completion(user)
+                }
             }
         }
     }

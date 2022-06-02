@@ -63,6 +63,14 @@ final class ProfileViewController: UIViewController {
         
         configureItems()
         configureStackView()
+        
+        getUser()
+    }
+    
+    func getUser() {
+        DatabaseServices.shared.getUser { users in
+            self.nameTextField.text = users.userName
+        }
     }
     
     private func configureStackView() {
