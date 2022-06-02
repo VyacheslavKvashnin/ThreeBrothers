@@ -26,17 +26,13 @@ final class DatabaseServices {
         }
     }
     
-    func getUser(completion: @escaping(Result<User, Error>) -> Void) {
-        db.document(Auth.auth().currentUser!.uid).getDocument { documentSnapshot, Error in
-            guard let data = documentSnapshot?.data() else { return }
-            let id = data["data"] as? String ?? ""
-            let userName = data["userName"] as? String ?? ""
-            let phone = data["phone"] as? String ?? ""
-            let email = data["email"] as? String ?? ""
+    func getUser(completion: @escaping(User) -> Void) {
+        db.collection("users").getDocuments { snap, error in
+            guard error == nil else { return }
             
-            let user = User(id: id, userName: userName, email: email, phone: phone, date: Data())
-            
-            completion(.success(user))
+            if let user = snap?.documents {
+                print(user)
+            }
         }
     }
 }
