@@ -40,6 +40,7 @@ final class SMSCodeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .white
         configureStackView()
         smsCodeTextField.delegate = self
@@ -121,8 +122,15 @@ final class SMSCodeViewController: UIViewController {
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
         doneToolbar.barStyle = .default
         
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let done: UIBarButtonItem = UIBarButtonItem(title: "Далее", style: .done, target: self, action: #selector(pressedButton))
+        let flexSpace = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: nil,
+            action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(
+            title: "Далее",
+            style: .done,
+            target: self,
+            action: #selector(pressedButton))
         
         var items = [UIBarButtonItem]()
         items.append(flexSpace)

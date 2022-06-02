@@ -117,8 +117,11 @@ final class PhoneViewController: UIViewController {
             }
             DispatchQueue.main.async {
                 let smsCodeVC = SMSCodeViewController()
-                smsCodeVC.title = "Enter Code"
-                self?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: self, action: nil)
+                self?.navigationItem.backBarButtonItem = UIBarButtonItem(
+                    title: "Назад",
+                    style: .plain,
+                    target: self,
+                    action: nil)
                 self?.navigationController?.pushViewController(smsCodeVC, animated: true)
             }
         })
