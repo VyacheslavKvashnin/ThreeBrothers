@@ -100,9 +100,9 @@ final class ProfileViewController: UIViewController {
     
     private func downLoadSheet() {
         let alert = UIAlertController(title: "Вы действительно хотите выйти?", message: "", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Выйти", style: .default, handler: { [unowned self] _ in
+        alert.addAction(UIAlertAction(title: "Выйти", style: .default, handler: { _ in
             AuthManager.shared.logOut()
-            dismiss(animated: true)
+            exit(0)
         }))
         alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { _ in
             
