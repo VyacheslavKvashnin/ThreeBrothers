@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.rootViewController = PhoneViewController()
         
         if Auth.auth().currentUser == nil {
-            let navVC = UINavigationController(rootViewController: PhoneViewController()) 
+            let navVC = UINavigationController(rootViewController: PhoneViewController())
             window.rootViewController = navVC
         } else {
             window.rootViewController = TabBarController()

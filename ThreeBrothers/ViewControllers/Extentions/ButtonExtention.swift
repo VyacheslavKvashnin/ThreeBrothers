@@ -12,9 +12,10 @@ extension UIButton {
         let button = UIButton()
         button.setTitleColor(UIColor.white, for: .normal)
         button.setTitleColor(UIColor.systemGray4, for: .highlighted)
-        button.backgroundColor = .systemCyan
+        button.backgroundColor = .systemYellow
         button.layer.cornerRadius = 10
-        button.setTitle("Next", for: .normal)
+        button.setTitle("Далее", for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 20)
         return button
     }
 }

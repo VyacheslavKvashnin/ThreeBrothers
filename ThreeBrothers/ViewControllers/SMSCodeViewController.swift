@@ -12,15 +12,23 @@ final class SMSCodeViewController: UIViewController {
     private let stackView = UIStackView()
     
     private let iconImage: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "ThreeBrother.jpg"))
+        let imageView = UIImageView(image: UIImage(named: "brotherImage"))
+        imageView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
+        imageView.layer.borderWidth = 5
+        imageView.layer.borderColor = UIColor.yellow.cgColor
+        imageView.layer.cornerRadius = imageView.frame.size.height / 2
+        imageView.clipsToBounds = true
         return imageView
     }()
     
     private let smsCodeTextField: UITextField = {
         let textField = UITextField.customTextField()
-        textField.placeholder = "Enter SMS Code"
+        textField.backgroundColor = UIColor(red: 1, green: 1, blue: 0, alpha: 0.2)
+        textField.textColor = .white
+        textField.attributedPlaceholder = NSAttributedString(
+            string: "123 456",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 1, blue: 1, alpha: 0.5)])
         textField.keyboardType = .asciiCapableNumberPad
-        textField.returnKeyType = .continue
         return textField
     }()
     
@@ -37,6 +45,17 @@ final class SMSCodeViewController: UIViewController {
         smsCodeTextField.delegate = self
         setNotificationForKeyboard()
         addDoneButtonOnKeyboard()
+        assignBackground()
+    }
+    
+    private func assignBackground(){
+        let background = UIImage(named: "background")
+        let imageView: UIImageView!
+        imageView = UIImageView(frame: view.bounds)
+        imageView.image = background
+        imageView.center = view.center
+        view.addSubview(imageView)
+        self.view.sendSubviewToBack(imageView)
     }
     
     @objc func pressedButton() {

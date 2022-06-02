@@ -10,20 +10,26 @@ import UIKit
 final class PhoneViewController: UIViewController {
     
     private let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+    
     private let stackView = UIStackView()
     
     private let iconImage: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "brotherImage"))
+        imageView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
         imageView.layer.borderWidth = 5
-        imageView.layer.borderColor = CGColor(red: 255, green: 1, blue: 1, alpha: 1)
-        imageView.layer.cornerRadius = imageView.frame.width / 2
+        imageView.layer.borderColor = UIColor.yellow.cgColor
+        imageView.layer.cornerRadius = imageView.frame.size.height / 2
         imageView.clipsToBounds = true
         return imageView
     }()
     
     private let phoneTextField: UITextField = {
         let textField = UITextField.customTextField()
-        textField.placeholder = "Введите номер телефона"
+        textField.backgroundColor = UIColor(red: 1, green: 1, blue: 0, alpha: 0.2)
+        textField.textColor = .white
+        textField.attributedPlaceholder = NSAttributedString(
+            string: "650 555 1234",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 1, blue: 1, alpha: 0.5)])
         textField.keyboardType = .asciiCapableNumberPad
         return textField
     }()
@@ -34,27 +40,28 @@ final class PhoneViewController: UIViewController {
         return button
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+
         view.backgroundColor = .white
         phoneTextField.delegate = self
         configureStackView()
         setNotificationForKeyboard()
         gestureTap()
         addDoneButtonOnKeyboard()
-                assignBackground()
+        assignBackground()
+    
     }
     
-       private func assignBackground(){
-            let background = UIImage(named: "background")
-            let imageView: UIImageView!
-            imageView = UIImageView(frame: view.bounds)
-            imageView.image = background
-            imageView.center = view.center
-            view.addSubview(imageView)
-            self.view.sendSubviewToBack(imageView)
-        }
+    private func assignBackground(){
+        let background = UIImage(named: "background")
+        let imageView: UIImageView!
+        imageView = UIImageView(frame: view.bounds)
+        imageView.image = background
+        imageView.center = view.center
+        view.addSubview(imageView)
+        self.view.sendSubviewToBack(imageView)
+    }
     
     @objc func pressedButton(sender: UIButton) {
         guard let text = phoneTextField.text, !text.isEmpty else {
@@ -95,6 +102,7 @@ final class PhoneViewController: UIViewController {
             loginButton.heightAnchor.constraint(equalToConstant: 60),
             phoneTextField.heightAnchor.constraint(equalToConstant: 30),
             iconImage.heightAnchor.constraint(equalToConstant: 300),
+            iconImage.widthAnchor.constraint(equalToConstant: 300),
             loginButton.topAnchor.constraint(equalTo: phoneTextField.bottomAnchor, constant: 30),
             phoneTextField.topAnchor.constraint(equalTo: iconImage.bottomAnchor, constant: 40)
         ])
@@ -116,7 +124,7 @@ final class PhoneViewController: UIViewController {
         })
     }
     
-   private func addDoneButtonOnKeyboard() {
+    private func addDoneButtonOnKeyboard() {
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
         doneToolbar.barStyle = .default
         
