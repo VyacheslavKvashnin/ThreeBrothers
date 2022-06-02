@@ -14,6 +14,7 @@ extension UITextField {
         textField.layer.cornerRadius = 10
         textField.borderStyle = .roundedRect
         textField.layer.cornerRadius = 10
+        textField.alpha = 0.5
         return textField
     }
 }

@@ -13,7 +13,11 @@ final class PhoneViewController: UIViewController {
     private let stackView = UIStackView()
     
     private let iconImage: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "ThreeBrother.jpg"))
+        let imageView = UIImageView(image: UIImage(named: "brotherImage"))
+        imageView.layer.borderWidth = 5
+        imageView.layer.borderColor = CGColor(red: 255, green: 1, blue: 1, alpha: 1)
+        imageView.layer.cornerRadius = imageView.frame.width / 2
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -33,28 +37,24 @@ final class PhoneViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Enter Phone Number"
         view.backgroundColor = .white
         phoneTextField.delegate = self
         configureStackView()
         setNotificationForKeyboard()
         gestureTap()
         addDoneButtonOnKeyboard()
-        //        assignBackground()
+                assignBackground()
     }
     
-    //   private func assignBackground(){
-    //        let background = UIImage(named: "background")
-    //
-    //        var imageView: UIImageView!
-    //        imageView = UIImageView(frame: view.bounds)
-    //        imageView.contentMode =  .scaleToFill
-    //        imageView.clipsToBounds = true
-    //        imageView.image = background
-    //        imageView.center = view.center
-    //        view.addSubview(imageView)
-    //        self.view.sendSubviewToBack(imageView)
-    //    }
+       private func assignBackground(){
+            let background = UIImage(named: "background")
+            let imageView: UIImageView!
+            imageView = UIImageView(frame: view.bounds)
+            imageView.image = background
+            imageView.center = view.center
+            view.addSubview(imageView)
+            self.view.sendSubviewToBack(imageView)
+        }
     
     @objc func pressedButton(sender: UIButton) {
         guard let text = phoneTextField.text, !text.isEmpty else {
