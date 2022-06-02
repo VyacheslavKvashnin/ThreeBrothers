@@ -9,6 +9,10 @@ import UIKit
 
 final class PhoneViewController: UIViewController {
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
+    
     private let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
     
     private let stackView = UIStackView()
@@ -27,6 +31,7 @@ final class PhoneViewController: UIViewController {
         let textField = UITextField.customTextField()
         textField.backgroundColor = UIColor(red: 1, green: 1, blue: 0, alpha: 0.2)
         textField.textColor = .white
+        textField.textAlignment = .center
         textField.attributedPlaceholder = NSAttributedString(
             string: "650 555 1234",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 1, blue: 1, alpha: 0.5)])
@@ -100,7 +105,7 @@ final class PhoneViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             loginButton.heightAnchor.constraint(equalToConstant: 60),
-            phoneTextField.heightAnchor.constraint(equalToConstant: 30),
+            phoneTextField.heightAnchor.constraint(equalToConstant: 50),
             iconImage.heightAnchor.constraint(equalToConstant: 300),
             iconImage.widthAnchor.constraint(equalToConstant: 300),
             loginButton.topAnchor.constraint(equalTo: phoneTextField.bottomAnchor, constant: 30),
@@ -122,6 +127,7 @@ final class PhoneViewController: UIViewController {
                     style: .plain,
                     target: self,
                     action: nil)
+                self?.navigationItem.backBarButtonItem?.tintColor = .white
                 self?.navigationController?.pushViewController(smsCodeVC, animated: true)
             }
         })
@@ -132,7 +138,11 @@ final class PhoneViewController: UIViewController {
         doneToolbar.barStyle = .default
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let done: UIBarButtonItem = UIBarButtonItem(title: "Далее", style: .done, target: self, action: #selector(pressedButton))
+        let done: UIBarButtonItem = UIBarButtonItem(
+            title: "Далее",
+            style: .done,
+            target: self,
+            action: #selector(pressedButton))
         
         var items = [UIBarButtonItem]()
         items.append(flexSpace)

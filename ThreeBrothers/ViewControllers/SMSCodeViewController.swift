@@ -25,6 +25,7 @@ final class SMSCodeViewController: UIViewController {
         let textField = UITextField.customTextField()
         textField.backgroundColor = UIColor(red: 1, green: 1, blue: 0, alpha: 0.2)
         textField.textColor = .white
+        textField.textAlignment = .center
         textField.attributedPlaceholder = NSAttributedString(
             string: "123 456",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 1, blue: 1, alpha: 0.5)])
@@ -102,7 +103,7 @@ final class SMSCodeViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             loginButton.heightAnchor.constraint(equalToConstant: 60),
-            smsCodeTextField.heightAnchor.constraint(equalToConstant: 30),
+            smsCodeTextField.heightAnchor.constraint(equalToConstant: 50),
             iconImage.heightAnchor.constraint(equalToConstant: 300),
             loginButton.topAnchor.constraint(equalTo: smsCodeTextField.bottomAnchor, constant: 30),
             smsCodeTextField.topAnchor.constraint(equalTo: iconImage.bottomAnchor, constant: 40)
