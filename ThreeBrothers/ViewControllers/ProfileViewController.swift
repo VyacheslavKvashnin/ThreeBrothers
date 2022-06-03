@@ -61,6 +61,8 @@ class ProfileViewController: UIViewController {
         
         configureItems()
         configureStackView()
+        
+        gestureTap()
     }
     
     func getUser() {
@@ -112,6 +114,15 @@ class ProfileViewController: UIViewController {
     
     @objc func logOut() {
         downLoadSheet()
+    }
+    
+    private func gestureTap() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func handleTap() {
+        view.endEditing(true)
     }
     
     private func downLoadSheet() {
