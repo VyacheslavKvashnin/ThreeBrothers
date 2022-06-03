@@ -44,7 +44,6 @@ class AuthManager {
                 userName: "pop",
                 email: "",
                 phone: ""
-//                date: ""
             )
             
             DatabaseServices.shared.setUser(user: user) { resultDB in

@@ -32,7 +32,6 @@ final class DatabaseServices {
             
             if let users = snap?.documents {
                 for user in users {
-//                    let date = user["date"] as! String
                     let email = user["email"] as! String
                     let id = user["id"] as! String
                     let phone = user["phone"] as! String

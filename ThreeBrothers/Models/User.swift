@@ -12,7 +12,6 @@ struct User: Identifiable {
     let userName: String
     let email: String
     let phone: String
-//    let date: String
     
     var representation: [String: Any] {
         var representation = [String: Any]()
@@ -20,7 +19,6 @@ struct User: Identifiable {
         representation["userName"] = self.userName
         representation["email"] = self.email
         representation["phone"] = self.phone
-//        representation["date"] = self.date
         return representation
     }
 }
