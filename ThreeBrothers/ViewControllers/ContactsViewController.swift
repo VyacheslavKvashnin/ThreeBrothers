@@ -19,8 +19,13 @@ final class ContactsViewController: UIViewController {
     private let buttonCall: UIButton = {
         let button = UIButton.customButton()
         button.setTitle("Позвонить", for: .normal)
+        button.addTarget(self, action: #selector(makeCall), for: .touchUpInside)
         return button
     }()
+    
+    @objc func makeCall() {
+        downLoadSheet()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +67,22 @@ final class ContactsViewController: UIViewController {
         buttonCall.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50).isActive = true
         buttonCall.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50).isActive = true
         buttonCall.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -70).isActive = true
+    }
+    
+    private func downLoadSheet() {
+        let alert = UIAlertController()
+        alert.addAction(UIAlertAction(title: "8 908 836 8804", style: .default, handler: { _ in
+            
+        }))
+        alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { _ in
+            
+        }))
+        present(alert, animated: true)
+    }
+    
+    func makeAPhoneCall() {
+        let url: NSURL = URL(string: "89069087665")! as NSURL
+        UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
     }
 }
 

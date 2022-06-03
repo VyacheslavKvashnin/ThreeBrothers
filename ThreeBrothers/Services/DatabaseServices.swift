@@ -44,4 +44,13 @@ final class DatabaseServices {
             }
         }
     }
+    
+    func setProduct(product: Product, completion: @escaping(Product) -> Void) {
+        db.collection("products").document(product.name).setData([
+            "name": product.name,
+            "description": product.description,
+            "price": product.price
+//            "image": product.image
+        ])
+    }
 }
