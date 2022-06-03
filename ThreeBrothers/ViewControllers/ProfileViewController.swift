@@ -15,14 +15,6 @@ final class ProfileViewController: UIViewController {
     
     private let stackView = UIStackView()
     
-    private let labelName: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.text = "Example"
-        return label
-    }()
-    
     private let nameTextField: UITextField = {
         let textField = UITextField.customTextField()
         textField.placeholder = "Ваше имя"
@@ -30,7 +22,7 @@ final class ProfileViewController: UIViewController {
         return textField
     }()
     
-    private let phoneTextField: UITextField = {
+    private var phoneTextField: UITextField = {
         let textField = UITextField.customTextField()
         textField.placeholder = "Ваш номер телефона"
         textField.clearButtonMode = .whileEditing
@@ -63,13 +55,19 @@ final class ProfileViewController: UIViewController {
         
         configureItems()
         configureStackView()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         getUser()
     }
     
     func getUser() {
+        let phoneNumber = Auth.auth().currentUser?.phoneNumber
+        
         DatabaseServices.shared.getUser { users in
             self.nameTextField.text = users.userName
+            self.phoneTextField.text = phoneNumber
         }
     }
     
@@ -79,7 +77,6 @@ final class ProfileViewController: UIViewController {
         stackView.distribution = .equalSpacing
         stackView.spacing = 20
         
-        stackView.addArrangedSubview(labelName)
         stackView.addArrangedSubview(nameTextField)
         stackView.addArrangedSubview(phoneTextField)
         stackView.addArrangedSubview(emailTextField)

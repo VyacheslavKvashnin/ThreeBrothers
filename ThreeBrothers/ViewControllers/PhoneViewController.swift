@@ -9,10 +9,6 @@ import UIKit
 
 final class PhoneViewController: UIViewController {
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        .lightContent
-    }
-    
     private let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
     
     private let stackView = UIStackView()
