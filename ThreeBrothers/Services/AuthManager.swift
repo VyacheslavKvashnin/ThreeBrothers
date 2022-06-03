@@ -48,7 +48,6 @@ class AuthManager {
             
             DatabaseServices.shared.setUser(user: user) { resultDB in
                 switch resultDB {
-                    
                 case .success(_):
                     completion(.success(user))
                     

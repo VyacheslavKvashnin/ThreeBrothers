@@ -9,24 +9,25 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
-final class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController {
+    
+    var user: User!
     
     private let db = Firestore.firestore()
+    private let phoneNumber = Auth.auth().currentUser?.phoneNumber
     
     private let stackView = UIStackView()
     
-    private let nameTextField: UITextField = {
+    private var nameTextField: UITextField = {
         let textField = UITextField.customTextField()
         textField.placeholder = "Ваше имя"
         textField.clearButtonMode = .whileEditing
         return textField
     }()
     
-    private var phoneTextField: UITextField = {
-        let textField = UITextField.customTextField()
-        textField.placeholder = "Ваш номер телефона"
-        textField.clearButtonMode = .whileEditing
-        return textField
+    private let phoneLabel: UILabel = {
+        let label = UILabel()
+        return label
     }()
     
     private let emailTextField: UITextField = {
@@ -44,30 +45,41 @@ final class ProfileViewController: UIViewController {
     }()
     
     @objc func saveData() {
-        print("Save Data")
-        
+        setUser()
+        print(self.user ?? "")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "Профиль"
+        getUser()
+        
+        phoneLabel.text = phoneNumber
         
         configureItems()
         configureStackView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        getUser()
+    func getAllField(user: User) {
+        
+        nameTextField.text = user.userName
     }
     
     func getUser() {
-        let phoneNumber = Auth.auth().currentUser?.phoneNumber
-        
-        DatabaseServices.shared.getUser { users in
-            self.nameTextField.text = users.userName
-            self.phoneTextField.text = phoneNumber
+        DatabaseServices.shared.getUser { [unowned self] users in
+            self.user = users
+        }
+    }
+    
+    func setUser() {
+        DatabaseServices.shared.setUser(user: user) { result in
+            switch result {
+            case .success(_):
+                print("success")
+            case .failure(_):
+                print("Error")
+            }
         }
     }
     
@@ -78,7 +90,7 @@ final class ProfileViewController: UIViewController {
         stackView.spacing = 20
         
         stackView.addArrangedSubview(nameTextField)
-        stackView.addArrangedSubview(phoneTextField)
+        stackView.addArrangedSubview(phoneLabel)
         stackView.addArrangedSubview(emailTextField)
         stackView.addArrangedSubview(saveButton)
         
