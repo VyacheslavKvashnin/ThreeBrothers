@@ -22,7 +22,6 @@ class ProfileViewController: UIViewController {
         let textField = UITextField.customTextField()
         textField.placeholder = "Ваше имя"
         textField.clearButtonMode = .whileEditing
-//        textField.becomeFirstResponder()
         return textField
     }()
     
@@ -35,6 +34,7 @@ class ProfileViewController: UIViewController {
         let textField = UITextField.customTextField()
         textField.placeholder = "Ваш имэил"
         textField.clearButtonMode = .whileEditing
+        textField.autocapitalizationType = .none
         return textField
     }()
     
@@ -136,3 +136,4 @@ extension UITextField {
         layer.addSublayer(bottomLine)
     }
 }
+
