@@ -9,8 +9,8 @@ import Foundation
 
 struct User: Identifiable {
     let id: String
-    let userName: String
-    let email: String
+    var userName: String
+    var email: String
     let phone: String
     
     var representation: [String: Any] {

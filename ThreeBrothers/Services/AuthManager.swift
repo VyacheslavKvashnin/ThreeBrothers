@@ -41,7 +41,7 @@ class AuthManager {
             }
             let user = User(
                 id: result?.user.uid ?? "",
-                userName: "pop",
+                userName: "",
                 email: "",
                 phone: ""
             )
@@ -55,7 +55,6 @@ class AuthManager {
                     completion(.failure(error))
                 }
             }
-            
         }
     }
     

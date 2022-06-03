@@ -22,6 +22,7 @@ class ProfileViewController: UIViewController {
         let textField = UITextField.customTextField()
         textField.placeholder = "Ваше имя"
         textField.clearButtonMode = .whileEditing
+//        textField.becomeFirstResponder()
         return textField
     }()
     
@@ -45,6 +46,8 @@ class ProfileViewController: UIViewController {
     }()
     
     @objc func saveData() {
+        user.userName = nameTextField.text ?? ""
+        user.email = emailTextField.text ?? ""
         setUser()
         print(self.user ?? "")
     }
@@ -54,21 +57,17 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .white
         title = "Профиль"
         getUser()
-        
         phoneLabel.text = phoneNumber
         
         configureItems()
         configureStackView()
     }
     
-    func getAllField(user: User) {
-        
-        nameTextField.text = user.userName
-    }
-    
     func getUser() {
         DatabaseServices.shared.getUser { [unowned self] users in
             self.user = users
+            self.nameTextField.text = users.userName
+            self.emailTextField.text = users.email
         }
     }
     

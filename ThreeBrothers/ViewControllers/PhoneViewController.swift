@@ -32,6 +32,7 @@ final class PhoneViewController: UIViewController {
             string: "650 555 1234",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 1, blue: 1, alpha: 0.5)])
         textField.keyboardType = .asciiCapableNumberPad
+        textField.becomeFirstResponder()
         return textField
     }()
     
