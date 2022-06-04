@@ -60,8 +60,9 @@ final class DatabaseServices {
                     let name = product["name"] as! String
                     let description = product["description"] as! String
                     let price = product["price"] as! Int
+                    let count = product["count"] as! Int
                     
-                    let product = Product(name: name, description: description, price: price)
+                    let product = Product(name: name, description: description, price: price, count: count)
                     
                     var products = [Product]()
                     products.append(product)
