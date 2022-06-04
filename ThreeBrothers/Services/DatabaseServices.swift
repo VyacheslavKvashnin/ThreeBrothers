@@ -56,6 +56,7 @@ final class DatabaseServices {
     func getProduct(completion: @escaping([Product]) -> Void) {
         db.collection("products").getDocuments { snap, error in
             if let products = snap?.documents {
+                var productsArray = [Product]()
                 for product in products {
                     let name = product["name"] as! String
                     let description = product["description"] as! String
@@ -64,11 +65,10 @@ final class DatabaseServices {
                     
                     let product = Product(name: name, description: description, price: price, count: count)
                     
-                    var products = [Product]()
-                    products.append(product)
+                    productsArray.append(product)
                     
-                    completion(products)
                 }
+                completion(productsArray)
             }
         }
     }

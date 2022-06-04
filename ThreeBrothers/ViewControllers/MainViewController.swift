@@ -23,6 +23,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         title = "Меню"
         view.backgroundColor = .white
+        getProduct()
         
         mainTableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         mainTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -30,7 +31,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         mainTableView.dataSource = self
         
         view.addSubview(mainTableView)
-        getProduct()
         print(products)
     }
     
