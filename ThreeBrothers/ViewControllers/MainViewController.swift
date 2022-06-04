@@ -7,8 +7,14 @@
 
 import UIKit
 
-final class MainViewController: UIViewController {
-
+class MainViewController: UIViewController {
+    
+    private let mainTableView: UITableView = {
+        let tableView = UITableView()
+        
+        return tableView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Меню"
@@ -19,7 +25,6 @@ final class MainViewController: UIViewController {
             description: "The burger is very tasty",
             price: 200
         )
-//            image: UIImage.init())
         
         DatabaseServices.shared.setProduct(product: product) { productDB in
             print(productDB)
