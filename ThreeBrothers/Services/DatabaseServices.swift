@@ -50,7 +50,25 @@ final class DatabaseServices {
             "name": product.name,
             "description": product.description,
             "price": product.price
-//            "image": product.image
         ])
+    }
+    
+    func getProduct(completion: @escaping([Product]) -> Void) {
+        db.collection("products").getDocuments { snap, error in
+            if let products = snap?.documents {
+                for product in products {
+                    let name = product["name"] as! String
+                    let description = product["description"] as! String
+                    let price = product["price"] as! Int
+                    
+                    let product = Product(name: name, description: description, price: price)
+                    
+                    var products = [Product]()
+                    products.append(product)
+                    
+                    completion(products)
+                }
+            }
+        }
     }
 }
