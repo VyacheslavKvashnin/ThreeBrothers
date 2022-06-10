@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MainViewController: UIViewController {
     
     private let myArray = ["First", "Second", "Third"]
     
@@ -40,7 +40,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.mainTableView.reloadData()
         }
     }
-    
+}
+
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         products.count
     }
@@ -49,5 +51,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = products[indexPath.row].name
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let detailVC = DetailViewController()
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
