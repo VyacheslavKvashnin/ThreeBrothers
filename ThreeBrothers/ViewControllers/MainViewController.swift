@@ -55,7 +55,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let detailVC = DetailViewController()
+
+        let detailVC = DetailViewController(product: <#Product#>)
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
