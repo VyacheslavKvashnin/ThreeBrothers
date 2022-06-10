@@ -14,6 +14,7 @@
 		BD4DAD022836773E0048BF72 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4DAD012836773E0048BF72 /* CartViewController.swift */; };
 		BD4DAD042836815B0048BF72 /* TextFieldExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4DAD032836815B0048BF72 /* TextFieldExtention.swift */; };
 		BD4DAD0828368A3F0048BF72 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4DAD0728368A3F0048BF72 /* TabBarController.swift */; };
+		BD6B76ED2853BB940037E67F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B76EC2853BB940037E67F /* DetailViewController.swift */; };
 		BD732081284A78FB0016C8D2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BD732080284A78FB0016C8D2 /* FirebaseAuth */; };
 		BD732083284A78FB0016C8D2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = BD732082284A78FB0016C8D2 /* FirebaseFirestore */; };
 		BD732085284A85050016C8D2 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD732084284A85050016C8D2 /* Product.swift */; };
@@ -38,6 +39,7 @@
 		BD4DAD012836773E0048BF72 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		BD4DAD032836815B0048BF72 /* TextFieldExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtention.swift; sourceTree = "<group>"; };
 		BD4DAD0728368A3F0048BF72 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		BD6B76EC2853BB940037E67F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		BD732084284A85050016C8D2 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		BDA1DC172835025700E142CB /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		BDA1DC192835069F00E142CB /* SMSCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				BD4DAD0728368A3F0048BF72 /* TabBarController.swift */,
 				BDA1DC1B283506AF00E142CB /* MainViewController.swift */,
 				BD4DACFD283677090048BF72 /* ProfileViewController.swift */,
+				BD6B76EC2853BB940037E67F /* DetailViewController.swift */,
 				BD4DACFF2836772B0048BF72 /* ContactsViewController.swift */,
 				BD4DAD012836773E0048BF72 /* CartViewController.swift */,
 				BD2821222838EB2D00DBF1C2 /* AlertController.swift */,
@@ -237,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDA66E032834E465002A0A22 /* PhoneViewController.swift in Sources */,
+				BD6B76ED2853BB940037E67F /* DetailViewController.swift in Sources */,
 				BDA1DC182835025700E142CB /* AuthManager.swift in Sources */,
 				BD4DAD042836815B0048BF72 /* TextFieldExtention.swift in Sources */,
 				BD4DAD0828368A3F0048BF72 /* TabBarController.swift in Sources */,
