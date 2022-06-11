@@ -7,35 +7,45 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, DataManagerProtocol {
+    
+    var databaseServices: DatabaseServices
+    
+    init(databaseServices: DatabaseServices) {
+        self.databaseServices = databaseServices
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private let myArray = ["First", "Second", "Third"]
-    
     var products: [Product] = []
     
     private let mainTableView: UITableView = {
         let tableView = UITableView()
-        
         return tableView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+    }
+    
+    private func setupUI() {
         title = "Меню"
         view.backgroundColor = .white
         getProduct()
-        
         mainTableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         mainTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         mainTableView.delegate = self
         mainTableView.dataSource = self
-        
         view.addSubview(mainTableView)
-        print(products)
     }
     
     func getProduct() {
-        DatabaseServices.shared.getProduct { [unowned self] products in
+        databaseServices.getProduct { [unowned self] products in
             self.products = products
             self.mainTableView.reloadData()
         }

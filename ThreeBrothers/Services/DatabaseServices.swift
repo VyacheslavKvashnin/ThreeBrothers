@@ -9,7 +9,12 @@ import Foundation
 import FirebaseFirestore
 import FirebaseAuth
 
+protocol DataManagerProtocol {
+    var databaseServices: DatabaseServices {get}
+}
+
 final class DatabaseServices {
+    
     static let shared = DatabaseServices()
     
     private let db = Firestore.firestore()

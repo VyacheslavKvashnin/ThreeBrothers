@@ -7,7 +7,17 @@
 
 import UIKit
 
-final class PhoneViewController: UIViewController {
+final class PhoneViewController: UIViewController, AuthManagerProtocol {
+    var authManager: AuthManager
+    
+    init(authManager: AuthManager) {
+        self.authManager = authManager
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
     
@@ -44,7 +54,10 @@ final class PhoneViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupUI()
+    }
+    
+    private func setupUI() {
         view.backgroundColor = .white
         phoneTextField.delegate = self
         configureStackView()
@@ -52,7 +65,6 @@ final class PhoneViewController: UIViewController {
         gestureTap()
         addDoneButtonOnKeyboard()
         assignBackground()
-    
     }
     
     private func assignBackground(){

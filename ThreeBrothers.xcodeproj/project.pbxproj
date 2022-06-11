@@ -29,6 +29,7 @@
 		BDC05309283D601B00BC6418 /* KeyboardHideExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC05308283D601B00BC6418 /* KeyboardHideExtension.swift */; };
 		BDEA572328428E7A00F8983F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEA572228428E7A00F8983F /* User.swift */; };
 		BDEA57252842A67600F8983F /* DatabaseServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEA57242842A67600F8983F /* DatabaseServices.swift */; };
+		BDEE41E2285518B5009D05F6 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEE41E1285518B5009D05F6 /* AppDependency.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		BDC05308283D601B00BC6418 /* KeyboardHideExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHideExtension.swift; sourceTree = "<group>"; };
 		BDEA572228428E7A00F8983F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BDEA57242842A67600F8983F /* DatabaseServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseServices.swift; sourceTree = "<group>"; };
+		BDEE41E1285518B5009D05F6 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 		BDA66E122834E8DF002A0A22 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BDEE41E0285509DF009D05F6 /* Factory */,
 				BDA66E022834E465002A0A22 /* PhoneViewController.swift */,
 				BDA1DC192835069F00E142CB /* SMSCodeViewController.swift */,
 				BD4DAD0728368A3F0048BF72 /* TabBarController.swift */,
@@ -159,6 +162,14 @@
 				BDC05308283D601B00BC6418 /* KeyboardHideExtension.swift */,
 			);
 			path = Extentions;
+			sourceTree = "<group>";
+		};
+		BDEE41E0285509DF009D05F6 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				BDEE41E1285518B5009D05F6 /* AppDependency.swift */,
+			);
+			path = Factory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +256,7 @@
 				BD4DAD042836815B0048BF72 /* TextFieldExtention.swift in Sources */,
 				BD4DAD0828368A3F0048BF72 /* TabBarController.swift in Sources */,
 				BD2821232838EB2D00DBF1C2 /* AlertController.swift in Sources */,
+				BDEE41E2285518B5009D05F6 /* AppDependency.swift in Sources */,
 				BD4DACFC2836683C0048BF72 /* ButtonExtention.swift in Sources */,
 				BDEA572328428E7A00F8983F /* User.swift in Sources */,
 				BDEA57252842A67600F8983F /* DatabaseServices.swift in Sources */,

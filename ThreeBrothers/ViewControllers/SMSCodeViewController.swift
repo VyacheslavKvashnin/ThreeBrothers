@@ -41,7 +41,10 @@ final class SMSCodeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupUI()
+    }
+    
+    private func setupUI() {
         view.backgroundColor = .white
         configureStackView()
         smsCodeTextField.delegate = self
