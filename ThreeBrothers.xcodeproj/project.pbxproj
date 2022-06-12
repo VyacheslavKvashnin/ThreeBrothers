@@ -30,6 +30,12 @@
 		BDEA572328428E7A00F8983F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEA572228428E7A00F8983F /* User.swift */; };
 		BDEA57252842A67600F8983F /* DatabaseServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEA57242842A67600F8983F /* DatabaseServices.swift */; };
 		BDEE41E2285518B5009D05F6 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEE41E1285518B5009D05F6 /* AppDependency.swift */; };
+		BDF6F25C285664F400BB8814 /* ProductsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF6F256285664F400BB8814 /* ProductsPresenter.swift */; };
+		BDF6F25D285664F400BB8814 /* ProductsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF6F257285664F400BB8814 /* ProductsWorker.swift */; };
+		BDF6F25E285664F400BB8814 /* ProductsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF6F258285664F400BB8814 /* ProductsRouter.swift */; };
+		BDF6F25F285664F400BB8814 /* ProductsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF6F259285664F400BB8814 /* ProductsModels.swift */; };
+		BDF6F260285664F400BB8814 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF6F25A285664F400BB8814 /* ProductsViewController.swift */; };
+		BDF6F261285664F400BB8814 /* ProductsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF6F25B285664F400BB8814 /* ProductsInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +62,12 @@
 		BDEA572228428E7A00F8983F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BDEA57242842A67600F8983F /* DatabaseServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseServices.swift; sourceTree = "<group>"; };
 		BDEE41E1285518B5009D05F6 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
+		BDF6F256285664F400BB8814 /* ProductsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsPresenter.swift; sourceTree = "<group>"; };
+		BDF6F257285664F400BB8814 /* ProductsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsWorker.swift; sourceTree = "<group>"; };
+		BDF6F258285664F400BB8814 /* ProductsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRouter.swift; sourceTree = "<group>"; };
+		BDF6F259285664F400BB8814 /* ProductsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsModels.swift; sourceTree = "<group>"; };
+		BDF6F25A285664F400BB8814 /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
+		BDF6F25B285664F400BB8814 /* ProductsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +116,7 @@
 		BDA66E122834E8DF002A0A22 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BDF6F255285664C600BB8814 /* Products */,
 				BDEE41E0285509DF009D05F6 /* Factory */,
 				BDA66E022834E465002A0A22 /* PhoneViewController.swift */,
 				BDA1DC192835069F00E142CB /* SMSCodeViewController.swift */,
@@ -170,6 +183,19 @@
 				BDEE41E1285518B5009D05F6 /* AppDependency.swift */,
 			);
 			path = Factory;
+			sourceTree = "<group>";
+		};
+		BDF6F255285664C600BB8814 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BDF6F256285664F400BB8814 /* ProductsPresenter.swift */,
+				BDF6F257285664F400BB8814 /* ProductsWorker.swift */,
+				BDF6F258285664F400BB8814 /* ProductsRouter.swift */,
+				BDF6F259285664F400BB8814 /* ProductsModels.swift */,
+				BDF6F25A285664F400BB8814 /* ProductsViewController.swift */,
+				BDF6F25B285664F400BB8814 /* ProductsInteractor.swift */,
+			);
+			path = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDA66E032834E465002A0A22 /* PhoneViewController.swift in Sources */,
+				BDF6F260285664F400BB8814 /* ProductsViewController.swift in Sources */,
 				BD6B76ED2853BB940037E67F /* DetailViewController.swift in Sources */,
 				BDA1DC182835025700E142CB /* AuthManager.swift in Sources */,
 				BD4DAD042836815B0048BF72 /* TextFieldExtention.swift in Sources */,
@@ -261,10 +288,15 @@
 				BDEA572328428E7A00F8983F /* User.swift in Sources */,
 				BDEA57252842A67600F8983F /* DatabaseServices.swift in Sources */,
 				BDA66DFF2834E465002A0A22 /* AppDelegate.swift in Sources */,
+				BDF6F25F285664F400BB8814 /* ProductsModels.swift in Sources */,
+				BDF6F25E285664F400BB8814 /* ProductsRouter.swift in Sources */,
 				BD732085284A85050016C8D2 /* Product.swift in Sources */,
 				BD4DACFE283677090048BF72 /* ProfileViewController.swift in Sources */,
+				BDF6F25D285664F400BB8814 /* ProductsWorker.swift in Sources */,
 				BD4DAD002836772B0048BF72 /* ContactsViewController.swift in Sources */,
+				BDF6F261285664F400BB8814 /* ProductsInteractor.swift in Sources */,
 				BDC05309283D601B00BC6418 /* KeyboardHideExtension.swift in Sources */,
+				BDF6F25C285664F400BB8814 /* ProductsPresenter.swift in Sources */,
 				BDA1DC1A2835069F00E142CB /* SMSCodeViewController.swift in Sources */,
 				BD4DAD022836773E0048BF72 /* CartViewController.swift in Sources */,
 				BDA1DC1C283506AF00E142CB /* MainViewController.swift in Sources */,
