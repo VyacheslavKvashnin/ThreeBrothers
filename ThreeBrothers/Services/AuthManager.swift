@@ -13,8 +13,8 @@ protocol AuthManagerProtocol {
 }
 
 class AuthManager {
-    
     static let shared = AuthManager()
+    private init() {}
     
     private let auth = Auth.auth()
     private var verificationId: String?

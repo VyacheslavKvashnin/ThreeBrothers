@@ -12,9 +12,7 @@ final class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let databaseServices = DatabaseServices.shared
-        
-        let mainVC = UINavigationController(rootViewController: MainViewController(databaseServices: databaseServices))
+        let mainVC = UINavigationController(rootViewController: MainViewController())
         let profileVC = UINavigationController(rootViewController: ProfileViewController())
         let contactsVC = UINavigationController(rootViewController: ContactsViewController())
         let cartVC = UINavigationController(rootViewController: CartViewController())

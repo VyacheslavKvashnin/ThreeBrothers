@@ -7,17 +7,7 @@
 
 import UIKit
 
-final class PhoneViewController: UIViewController, AuthManagerProtocol {
-    var authManager: AuthManager
-    
-    init(authManager: AuthManager) {
-        self.authManager = authManager
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+final class PhoneViewController: UIViewController {
     
     private let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
     

@@ -18,11 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         let window = UIWindow()
-        window.rootViewController = PhoneViewController(coder: NSCoder())
+        window.rootViewController = PhoneViewController()
         
         if Auth.auth().currentUser == nil {
-            let authManager = AuthManager()
-            let navVC = UINavigationController(rootViewController: PhoneViewController(authManager: authManager))
+            let navVC = UINavigationController(rootViewController: PhoneViewController())
             window.rootViewController = navVC
         } else {
             window.rootViewController = TabBarController()

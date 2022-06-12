@@ -12,7 +12,7 @@ import FirebaseFirestore
 class ProfileViewController: UIViewController {
     
     var user: User!
-    
+
     private let db = Firestore.firestore()
     private let phoneNumber = Auth.auth().currentUser?.phoneNumber
     
