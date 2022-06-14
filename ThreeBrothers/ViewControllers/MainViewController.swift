@@ -19,14 +19,13 @@ class MainViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private let myArray = ["First", "Second", "Third"]
+   
     var products: [Product] = []
-    
-    private let mainTableView: UITableView = {
-        let tableView = UITableView()
-        return tableView
-    }()
+        
+    let collectionView = UICollectionView(
+        frame: .zero,
+        collectionViewLayout: UICollectionViewFlowLayout()
+    )
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,34 +36,50 @@ class MainViewController: UIViewController {
         title = "Меню"
         view.backgroundColor = .white
         getProduct()
-        mainTableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-        mainTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        mainTableView.delegate = self
-        mainTableView.dataSource = self
-        view.addSubview(mainTableView)
+        collectionView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        collectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: ProductCollectionViewCell.identifier)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        view.addSubview(collectionView)
     }
     
     func getProduct() {
         databaseServices.getProduct { [unowned self] products in
             self.products = products
-            self.mainTableView.reloadData()
+            self.collectionView.reloadData()
         }
     }
 }
 
-extension MainViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         products.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = products[indexPath.row].name
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.identifier, for: indexPath) as? ProductCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        let index = products[indexPath.item]
+        cell.configure(with: UIImage(named: "brotherImage")!, and: index.name)
+        
         return cell
     }
+}
+
+extension MainViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(
+            width: view.frame.width,
+            height: view.frame.width
+        )
+    }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-       
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 4
     }
 }

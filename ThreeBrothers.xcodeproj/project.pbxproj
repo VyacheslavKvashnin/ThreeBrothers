@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BD2821232838EB2D00DBF1C2 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2821222838EB2D00DBF1C2 /* AlertController.swift */; };
+		BD2A7B2A28590C02006CD27A /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2A7B2928590C02006CD27A /* ProductCollectionViewCell.swift */; };
 		BD4DACFC2836683C0048BF72 /* ButtonExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4DACFB2836683C0048BF72 /* ButtonExtention.swift */; };
 		BD4DACFE283677090048BF72 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4DACFD283677090048BF72 /* ProfileViewController.swift */; };
 		BD4DAD002836772B0048BF72 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4DACFF2836772B0048BF72 /* ContactsViewController.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		BD2821222838EB2D00DBF1C2 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		BD2A7B2928590C02006CD27A /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		BD4DACFB2836683C0048BF72 /* ButtonExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtention.swift; sourceTree = "<group>"; };
 		BD4DACFD283677090048BF72 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BD4DACFF2836772B0048BF72 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				BDA1DC192835069F00E142CB /* SMSCodeViewController.swift */,
 				BD4DAD0728368A3F0048BF72 /* TabBarController.swift */,
 				BDA1DC1B283506AF00E142CB /* MainViewController.swift */,
+				BD2A7B2928590C02006CD27A /* ProductCollectionViewCell.swift */,
 				BD4DACFD283677090048BF72 /* ProfileViewController.swift */,
 				BD6B76EC2853BB940037E67F /* DetailViewController.swift */,
 				BD4DACFF2836772B0048BF72 /* ContactsViewController.swift */,
@@ -298,6 +301,7 @@
 				BDC05309283D601B00BC6418 /* KeyboardHideExtension.swift in Sources */,
 				BDF6F25C285664F400BB8814 /* ProductsPresenter.swift in Sources */,
 				BDA1DC1A2835069F00E142CB /* SMSCodeViewController.swift in Sources */,
+				BD2A7B2A28590C02006CD27A /* ProductCollectionViewCell.swift in Sources */,
 				BD4DAD022836773E0048BF72 /* CartViewController.swift in Sources */,
 				BDA1DC1C283506AF00E142CB /* MainViewController.swift in Sources */,
 			);
