@@ -9,6 +9,18 @@ import UIKit
 
 final class PhoneViewController: UIViewController {
     
+    let authManager: AuthManager
+    
+    init(authManager: AuthManager) {
+        self.authManager = authManager
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
     private let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
     
     private let stackView = UIStackView()
@@ -114,7 +126,7 @@ final class PhoneViewController: UIViewController {
     
     private func startAuthPressed(text: String) {
         let number = "+1\(text)"
-        AuthManager.shared.startAuth(phoneNumber: number, completion: { [weak self] success in
+        authManager.startAuth(phoneNumber: number, completion: { [weak self] success in
             guard success else {
                 self?.showAlert(title: "Ошибка", message: "Некорректный номер телефона")
                 return

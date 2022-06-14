@@ -9,11 +9,26 @@ import UIKit
 
 final class TabBarController: UITabBarController {
     
+    typealias Dependencies = DataManagerProtocol & AuthManagerProtocol
+    
+    var databaseManager: DatabaseServices
+    var authManager: AuthManager
+    
+    init(container: Dependencies) {
+        self.databaseManager = container.databaseServices
+        self.authManager = container.authManager
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let mainVC = UINavigationController(rootViewController: MainViewController())
-        let profileVC = UINavigationController(rootViewController: ProfileViewController())
+        let profileVC = UINavigationController(rootViewController: ProfileViewController(databaseServices: databaseManager))
         let contactsVC = UINavigationController(rootViewController: ContactsViewController())
         let cartVC = UINavigationController(rootViewController: CartViewController())
     

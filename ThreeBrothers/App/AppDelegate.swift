@@ -15,16 +15,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        
         FirebaseApp.configure()
         
+        let authManager = AuthManager.shared
+        let databaseServices = DatabaseServices.shared
+        
         let window = UIWindow()
-        window.rootViewController = PhoneViewController()
+        window.rootViewController = PhoneViewController(authManager: authManager)
         
         if Auth.auth().currentUser == nil {
-            let navVC = UINavigationController(rootViewController: PhoneViewController())
+            let navVC = UINavigationController(rootViewController: PhoneViewController(authManager: authManager))
             window.rootViewController = navVC
         } else {
-            window.rootViewController = TabBarController()
+            window.rootViewController = TabBarController(
+                container: AppDependency(
+                    databaseServices: databaseServices,
+                    authManager: authManager))
         }
         
         window.makeKeyAndVisible()

@@ -11,3 +11,4 @@ struct AppDependency: DataManagerProtocol, AuthManagerProtocol {
     var databaseServices: DatabaseServices
     var authManager: AuthManager
 }
+

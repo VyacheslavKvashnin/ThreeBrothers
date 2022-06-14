@@ -188,12 +188,12 @@
 		BDF6F255285664C600BB8814 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BDF6F256285664F400BB8814 /* ProductsPresenter.swift */,
-				BDF6F257285664F400BB8814 /* ProductsWorker.swift */,
-				BDF6F258285664F400BB8814 /* ProductsRouter.swift */,
-				BDF6F259285664F400BB8814 /* ProductsModels.swift */,
 				BDF6F25A285664F400BB8814 /* ProductsViewController.swift */,
 				BDF6F25B285664F400BB8814 /* ProductsInteractor.swift */,
+				BDF6F256285664F400BB8814 /* ProductsPresenter.swift */,
+				BDF6F259285664F400BB8814 /* ProductsModels.swift */,
+				BDF6F257285664F400BB8814 /* ProductsWorker.swift */,
+				BDF6F258285664F400BB8814 /* ProductsRouter.swift */,
 			);
 			path = Products;
 			sourceTree = "<group>";

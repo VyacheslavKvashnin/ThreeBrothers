@@ -11,6 +11,17 @@ import FirebaseFirestore
 
 class ProfileViewController: UIViewController {
     
+    let databaseServices: DatabaseServices
+    
+    init(databaseServices: DatabaseServices) {
+        self.databaseServices = databaseServices
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     var user: User!
 
     private let db = Firestore.firestore()
@@ -66,7 +77,7 @@ class ProfileViewController: UIViewController {
     }
     
     func getUser() {
-        DatabaseServices.shared.getUser { [unowned self] users in
+        databaseServices.getUser { [unowned self] users in
             self.user = users
             self.nameTextField.text = users.userName
             self.emailTextField.text = users.email

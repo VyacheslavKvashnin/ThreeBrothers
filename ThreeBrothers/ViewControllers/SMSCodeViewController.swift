@@ -75,7 +75,9 @@ final class SMSCodeViewController: UIViewController {
             switch success {
             case .success(_):
                 DispatchQueue.main.async {
-                    let mainVC = TabBarController()
+                    let mainVC = TabBarController(container: AppDependency.init(
+                        databaseServices: DatabaseServices.shared,
+                        authManager: AuthManager.shared))
                     mainVC.modalPresentationStyle = .fullScreen
                     self?.present(mainVC, animated: true)
                 }
