@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol DetailViewControllerProtocol {
+    
+}
+
 class DetailViewController: UIViewController {
     
     var product: Product
