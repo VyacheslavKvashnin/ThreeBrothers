@@ -9,6 +9,17 @@ import UIKit
 
 final class SMSCodeViewController: UIViewController {
     
+    let authManager: AuthManager
+    
+    init(authManager: AuthManager) {
+        self.authManager = authManager
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private let stackView = UIStackView()
     
     private let iconImage: UIImageView = {
