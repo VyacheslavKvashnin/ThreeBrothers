@@ -36,6 +36,8 @@ class MainViewController: UIViewController {
         title = "Меню"
         view.backgroundColor = .white
         getProduct()
+        
+        
         collectionView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         collectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: ProductCollectionViewCell.identifier)
         collectionView.dataSource = self

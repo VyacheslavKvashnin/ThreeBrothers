@@ -26,6 +26,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(imageView)
+        contentView.addSubview(nameLabel)
     }
     
     required init?(coder: NSCoder) {
@@ -35,6 +36,11 @@ class ProductCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         imageView.frame = contentView.bounds
+        nameLabel.frame = CGRect(
+            x: 5,
+            y: contentView.frame.size.height - 50,
+            width: contentView.frame.size.width - 10,
+            height: 50)
     }
     
     override func prepareForReuse() {
