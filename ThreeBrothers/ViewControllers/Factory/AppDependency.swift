@@ -8,6 +8,6 @@
 import Foundation
 
 struct AppDependency: DataManagerProtocol, AuthManagerProtocol {
-    let databaseServices: DatabaseServices
-    let authManager: AuthManager
+    var databaseServices: DatabaseServices
+    var authManager: AuthManager
 }
