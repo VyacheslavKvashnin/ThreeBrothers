@@ -63,7 +63,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         let index = products[indexPath.item]
         cell.configure(product: index)
-        cell.backgroundColor = .blue
         return cell
     }
     
@@ -79,7 +78,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(
             width: view.frame.width,
-            height: 100
+            height: 120
         )
     }
     

@@ -24,10 +24,24 @@ class ProductCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    private let descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Some Text"
+        return label
+    }()
+    
+    private let priceLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Some Text"
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(imageView)
         contentView.addSubview(nameLabel)
+        contentView.addSubview(descriptionLabel)
+        contentView.addSubview(priceLabel)
     }
     
     required init?(coder: NSCoder) {
@@ -46,6 +60,16 @@ class ProductCollectionViewCell: UICollectionViewCell {
             y: 5,
             width: contentView.frame.size.width - 10,
             height: 50)
+        descriptionLabel.frame = CGRect(
+            x: 120,
+            y: 30,
+            width: contentView.frame.size.width - 10,
+            height: 50)
+        priceLabel.frame = CGRect(
+            x: 120,
+            y: 50,
+            width: contentView.frame.size.width - 10,
+            height: 50)
     }
     
     override func prepareForReuse() {
@@ -55,6 +79,8 @@ class ProductCollectionViewCell: UICollectionViewCell {
     
     func configure(product: Product) {
         nameLabel.text = product.name
+        descriptionLabel.text = product.description
+        priceLabel.text = String(product.price)
         guard let url = URL(string: product.image) else { return }
         imageView.sd_setImage(with: url)
     }
