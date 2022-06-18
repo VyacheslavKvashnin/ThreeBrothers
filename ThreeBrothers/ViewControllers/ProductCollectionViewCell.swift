@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ProductCollectionViewCell: UICollectionViewCell {
     static let identifier = "productCell"
@@ -35,10 +36,14 @@ class ProductCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        imageView.frame = contentView.bounds
-        nameLabel.frame = CGRect(
+        imageView.frame = CGRect(
             x: 5,
-            y: contentView.frame.size.height - 50,
+            y: 0,
+            width: 100,
+            height: 100)
+        nameLabel.frame = CGRect(
+            x: 120,
+            y: 5,
             width: contentView.frame.size.width - 10,
             height: 50)
     }
@@ -48,8 +53,9 @@ class ProductCollectionViewCell: UICollectionViewCell {
         imageView.image = nil
     }
     
-    func configure(with image: UIImage, and name: String) {
-        nameLabel.text = name
-        imageView.image = image
+    func configure(product: Product) {
+        nameLabel.text = product.name
+        guard let url = URL(string: product.image) else { return }
+        imageView.sd_setImage(with: url)
     }
 }

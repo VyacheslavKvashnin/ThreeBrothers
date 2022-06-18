@@ -37,7 +37,6 @@ class MainViewController: UIViewController {
         view.backgroundColor = .white
         getProduct()
         
-        
         collectionView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         collectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: ProductCollectionViewCell.identifier)
         collectionView.dataSource = self
@@ -63,17 +62,24 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return UICollectionViewCell()
         }
         let index = products[indexPath.item]
-        cell.configure(with: UIImage(named: "brotherImage")!, and: index.name)
-        
+        cell.configure(product: index)
+        cell.backgroundColor = .blue
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let index = products[indexPath.item]
+        let detailVC = DetailViewController()
+        detailVC.product = index
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(
-            width: (view.frame.width / 2) - 2,
-            height: (view.frame.width / 2) - 2
+            width: view.frame.width,
+            height: 100
         )
     }
     
@@ -82,6 +88,6 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 4
+        return 1
     }
 }

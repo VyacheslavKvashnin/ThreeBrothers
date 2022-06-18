@@ -58,6 +58,36 @@ final class DatabaseServices {
         ])
     }
     
+    func setProductToCart(product: Product, user: User, completion: @escaping(Product) -> Void) {
+        db.collection("users").document(user.id).collection("cart").document(product.name).setData([
+            "name": product.name,
+            "description": product.description,
+            "price": product.price,
+            "count": product.count
+        ])
+    }
+    
+    func getProductToCart(completion: @escaping([Product]) -> Void) {
+        db.collection("users").document(Auth.auth().currentUser!.uid).collection("cart").getDocuments { snap, error in
+            guard error == nil else { return }
+            var productsCart = [Product]()
+            if let products = snap?.documents {
+                for product in products {
+                    let name = product["name"] as! String
+                    let description = product["description"] as! String
+                    let image = product["image"] as? String
+                    let price = product["price"] as! Int
+                    let count = product["count"] as! Int
+                    
+                    let product = Product(name: name, description: description, image: image ?? "", price: price, count: count)
+                    
+                    productsCart.append(product)
+                }
+                    completion(productsCart)
+            }
+        }
+    }
+    
     func getProduct(completion: @escaping([Product]) -> Void) {
         db.collection("products").getDocuments { snap, error in
             if let products = snap?.documents {
@@ -65,10 +95,11 @@ final class DatabaseServices {
                 for product in products {
                     let name = product["name"] as! String
                     let description = product["description"] as! String
+                    let image = product["image"] as? String
                     let price = product["price"] as! Int
                     let count = product["count"] as! Int
                     
-                    let product = Product(name: name, description: description, price: price, count: count)
+                    let product = Product(name: name, description: description, image: image ?? "", price: price, count: count)
                     
                     productsArray.append(product)
                     

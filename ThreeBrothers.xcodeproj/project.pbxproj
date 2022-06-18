@@ -27,6 +27,7 @@
 		BDA66E0B2834E466002A0A22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDA66E092834E466002A0A22 /* LaunchScreen.storyboard */; };
 		BDA66E182834FD96002A0A22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BDA66E172834FD96002A0A22 /* GoogleService-Info.plist */; };
 		BDC05309283D601B00BC6418 /* KeyboardHideExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC05308283D601B00BC6418 /* KeyboardHideExtension.swift */; };
+		BDE82F05285E484000AEEB9B /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = BDE82F04285E484000AEEB9B /* SDWebImage */; };
 		BDEA572328428E7A00F8983F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEA572228428E7A00F8983F /* User.swift */; };
 		BDEA57252842A67600F8983F /* DatabaseServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEA57242842A67600F8983F /* DatabaseServices.swift */; };
 		BDEE41E2285518B5009D05F6 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEE41E1285518B5009D05F6 /* AppDependency.swift */; };
@@ -75,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDE82F05285E484000AEEB9B /* SDWebImage in Frameworks */,
 				BD732081284A78FB0016C8D2 /* FirebaseAuth in Frameworks */,
 				BD732083284A78FB0016C8D2 /* FirebaseFirestore in Frameworks */,
 			);
@@ -217,6 +219,7 @@
 			packageProductDependencies = (
 				BD732080284A78FB0016C8D2 /* FirebaseAuth */,
 				BD732082284A78FB0016C8D2 /* FirebaseFirestore */,
+				BDE82F04285E484000AEEB9B /* SDWebImage */,
 			);
 			productName = ThreeBrothers;
 			productReference = BDA66DFB2834E465002A0A22 /* ThreeBrothers.app */;
@@ -248,6 +251,7 @@
 			mainGroup = BDA66DF22834E465002A0A22;
 			packageReferences = (
 				BD73207F284A78FB0016C8D2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				BDE82F03285E484000AEEB9B /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = BDA66DFC2834E465002A0A22 /* Products */;
 			projectDirPath = "";
@@ -521,6 +525,14 @@
 				version = 8.9.1;
 			};
 		};
+		BDE82F03285E484000AEEB9B /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -533,6 +545,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BD73207F284A78FB0016C8D2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		BDE82F04285E484000AEEB9B /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BDE82F03285E484000AEEB9B /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
