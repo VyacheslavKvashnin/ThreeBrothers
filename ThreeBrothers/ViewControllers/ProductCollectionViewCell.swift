@@ -20,7 +20,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Some Text"
+        label.font = .boldSystemFont(ofSize: 18)
         return label
     }()
     

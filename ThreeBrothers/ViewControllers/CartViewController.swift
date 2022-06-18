@@ -25,14 +25,8 @@ final class CartViewController: UIViewController {
         title = "Корзина"
         getUser()
         getProductsToCar()
+        collectionView.reloadData()
         setupUI()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()            
-        }
     }
     
     private func setupUI() {
@@ -54,7 +48,6 @@ final class CartViewController: UIViewController {
         DatabaseServices.shared.getProductToCart { products in
             self.products = products
             self.collectionView.reloadData()
-            print(products)
         }
     }
 }
@@ -84,8 +77,8 @@ extension CartViewController: UICollectionViewDelegate, UICollectionViewDataSour
 extension CartViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(
-            width: view.frame.width / 2,
-            height: view.frame.width / 2
+            width: view.frame.width,
+            height: 120
         )
     }
     
