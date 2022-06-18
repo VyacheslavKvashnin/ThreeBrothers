@@ -30,7 +30,7 @@ final class TabBarController: UITabBarController {
         let mainVC = UINavigationController(rootViewController: MainViewController(databaseServices: databaseManager))
         let profileVC = UINavigationController(rootViewController: ProfileViewController(databaseServices: databaseManager))
         let contactsVC = UINavigationController(rootViewController: ContactsViewController())
-        let cartVC = UINavigationController(rootViewController: CartViewController())
+        let cartVC = UINavigationController(rootViewController: CartViewController(databaseServices: databaseManager))
     
         mainVC.title = "Меню"
         profileVC.title = "Профиль"

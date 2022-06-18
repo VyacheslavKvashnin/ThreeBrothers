@@ -11,6 +11,17 @@ final class CartViewController: UIViewController {
     
     private let stackView = UIStackView()
     
+    var databaseServices: DatabaseServices
+    
+    init(databaseServices: DatabaseServices) {
+        self.databaseServices = databaseServices
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     var user: User!
     var products: [Product] = []
     
@@ -23,14 +34,11 @@ final class CartViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "Корзина"
-        getUser()
-        getProductsToCar()
-        collectionView.reloadData()
         setupUI()
     }
     
     private func setupUI() {
-        
+        getProductsToCar()
         collectionView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         collectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: ProductCollectionViewCell.identifier)
         collectionView.dataSource = self
@@ -38,14 +46,8 @@ final class CartViewController: UIViewController {
         view.addSubview(collectionView)
     }
     
-    private func getUser() {
-        DatabaseServices.shared.getUser { user in
-            self.user = user
-        }
-    }
-    
     private func getProductsToCar() {
-        DatabaseServices.shared.getProductToCart { products in
+        databaseServices.getProductToCart { products in
             self.products = products
             self.collectionView.reloadData()
         }
@@ -87,6 +89,6 @@ extension CartViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 4
+        return 1
     }
 }
