@@ -21,8 +21,7 @@ final class CartViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    var user: User!
+
     var products: [Product] = []
     
     private let collectionView = UICollectionView(
@@ -32,12 +31,13 @@ final class CartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        title = "Корзина"
         setupUI()
     }
     
     private func setupUI() {
+        view.backgroundColor = .white
+        title = "Корзина"
+        
         getProductsToCar()
         collectionView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         collectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: ProductCollectionViewCell.identifier)
@@ -47,7 +47,7 @@ final class CartViewController: UIViewController {
     }
     
     private func getProductsToCar() {
-        databaseServices.getProductToCart { products in
+        databaseServices.getProductToCart { [unowned self] products in
             self.products = products
             self.collectionView.reloadData()
         }

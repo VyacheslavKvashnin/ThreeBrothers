@@ -62,6 +62,7 @@ final class DatabaseServices {
         db.collection("users").document(user.id).collection("cart").document(product.name).setData([
             "name": product.name,
             "description": product.description,
+            "image": product.image,
             "price": product.price,
             "count": product.count
         ])
