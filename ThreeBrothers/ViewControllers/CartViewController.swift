@@ -34,6 +34,11 @@ final class CartViewController: UIViewController {
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
+    }
+    
     private func setupUI() {
         view.backgroundColor = .white
         title = "Корзина"

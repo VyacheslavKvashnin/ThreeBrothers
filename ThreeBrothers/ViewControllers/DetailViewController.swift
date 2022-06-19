@@ -48,7 +48,6 @@ class DetailViewController: UIViewController {
     
     @objc func saveInFavorite() {
         setDataFromFB()
-        
     }
     
     override func viewDidLoad() {
@@ -63,6 +62,7 @@ class DetailViewController: UIViewController {
         configureStackView()
         configure()
         getUser()
+        changeTitleButton()
     }
     
     private func configureStackView() {
@@ -105,6 +105,12 @@ class DetailViewController: UIViewController {
     private func setDataFromFB() {
         DatabaseServices.shared.setProductToCart(product: product, user: user) { _ in
             print("success")
+        }
+    }
+    
+    private func changeTitleButton() {
+        if product.name == "Burger" {
+            addInFavoriteButton.setTitle("Delete to cart", for: .normal)
         }
     }
 }
