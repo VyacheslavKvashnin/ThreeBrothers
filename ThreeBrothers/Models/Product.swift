@@ -8,7 +8,7 @@
 import Foundation
 
 struct Product {
-    var id = UUID().uuidString
+    let id: Int
     let name: String
     let description: String
     let image: String

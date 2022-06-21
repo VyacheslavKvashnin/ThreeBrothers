@@ -77,13 +77,14 @@ final class DatabaseServices {
                 var productsCart = [Product]()
                 if let products = snap?.documents {
                     for product in products {
+                        let id = product["id"] as! Int
                         let name = product["name"] as! String
                         let description = product["description"] as! String
                         let image = product["image"] as? String
                         let price = product["price"] as! Int
                         let count = product["count"] as! Int
                         
-                        let product = Product(name: name, description: description, image: image ?? "", price: price, count: count)
+                        let product = Product(id: id, name: name, description: description, image: image ?? "", price: price, count: count)
                         
                         productsCart.append(product)
                     }
@@ -102,13 +103,14 @@ final class DatabaseServices {
                 if let products = snap?.documents {
                     var productsArray = [Product]()
                     for product in products {
+                        let id = product["id"] as! Int
                         let name = product["name"] as! String
                         let description = product["description"] as! String
                         let image = product["image"] as? String
                         let price = product["price"] as! Int
                         let count = product["count"] as! Int
                         
-                        let product = Product(name: name, description: description, image: image ?? "", price: price, count: count)
+                        let product = Product(id: id, name: name, description: description, image: image ?? "", price: price, count: count)
                         
                         productsArray.append(product)
                         
