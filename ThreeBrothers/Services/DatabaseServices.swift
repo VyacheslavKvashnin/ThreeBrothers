@@ -52,6 +52,7 @@ final class DatabaseServices {
     
     func setProduct(product: Product, completion: @escaping(Product) -> Void) {
         db.collection("products").document(product.name).setData([
+            "id": product.id,
             "name": product.name,
             "description": product.description,
             "price": product.price
@@ -60,6 +61,7 @@ final class DatabaseServices {
     
     func setProductToCart(product: Product, user: User, completion: @escaping(Product) -> Void) {
         db.collection("users").document(user.id).collection("cart").document(product.name).setData([
+            "id": product.id,
             "name": product.name,
             "description": product.description,
             "image": product.image,
