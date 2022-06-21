@@ -11,6 +11,7 @@ import SDWebImage
 class DetailViewController: UIViewController {
     
     var product: Product!
+    var products: [Product] = []
     var user: User!
     
     private let stackView = UIStackView()
@@ -47,7 +48,8 @@ class DetailViewController: UIViewController {
     }()
     
     @objc func saveInFavorite() {
-        setDataFromFB()
+        changeTitleButton()
+        DatabaseServices.shared.deleteProduct()
     }
     
     override func viewDidLoad() {
@@ -59,10 +61,10 @@ class DetailViewController: UIViewController {
     }
     
     private func setupUI() {
+        getProductToCart()
         configureStackView()
         configure()
         getUser()
-        changeTitleButton()
     }
     
     private func configureStackView() {
@@ -102,15 +104,19 @@ class DetailViewController: UIViewController {
         }
     }
     
-    private func setDataFromFB() {
-        DatabaseServices.shared.setProductToCart(product: product, user: user) { _ in
-            print("success")
+    private func getProductToCart() {
+        DatabaseServices.shared.getProductToCart { products in
+            self.products = products
         }
     }
     
     private func changeTitleButton() {
-        if product.name == "Burger" {
-            addInFavoriteButton.setTitle("Delete to cart", for: .normal)
+        for prod in products {
+            if prod.id == product.id {
+                addInFavoriteButton.setTitle("Delete to cart", for: .normal)
+            } else {
+                addInFavoriteButton.setTitle("Add To Cart", for: .normal)
+            }
         }
     }
 }

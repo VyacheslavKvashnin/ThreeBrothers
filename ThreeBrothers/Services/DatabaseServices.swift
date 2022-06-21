@@ -71,56 +71,54 @@ final class DatabaseServices {
     }
     
     func getProductToCart(completion: @escaping([Product]) -> Void) {
-        DispatchQueue.global().async {
-            self.db.collection("users").document(Auth.auth().currentUser!.uid).collection("cart").getDocuments { snap, error in
-                guard error == nil else { return }
-                var productsCart = [Product]()
-                if let products = snap?.documents {
-                    for product in products {
-                        let id = product["id"] as! Int
-                        let name = product["name"] as! String
-                        let description = product["description"] as! String
-                        let image = product["image"] as? String
-                        let price = product["price"] as! Int
-                        let count = product["count"] as! Int
-                        
-                        let product = Product(id: id, name: name, description: description, image: image ?? "", price: price, count: count)
-                        
-                        productsCart.append(product)
-                    }
-                    DispatchQueue.main.async {
-                        completion(productsCart)
-                    }
+        self.db.collection("users").document(Auth.auth().currentUser!.uid).collection("cart").getDocuments { snap, error in
+            guard error == nil else { return }
+            var productsCart = [Product]()
+            if let products = snap?.documents {
+                for product in products {
+                    let id = product["id"] as! Int
+                    let name = product["name"] as! String
+                    let description = product["description"] as! String
+                    let image = product["image"] as? String
+                    let price = product["price"] as! Int
+                    let count = product["count"] as! Int
+                    
+                    let product = Product(id: id, name: name, description: description, image: image ?? "", price: price, count: count)
+                    
+                    productsCart.append(product)
+                }
+                DispatchQueue.main.async {
+                    completion(productsCart)
                 }
             }
         }
-        
+    }
+    
+    func deleteProduct() {
+        db.collection("users").document(Auth.auth().currentUser!.uid).collection("cart").document("Burger").delete()
     }
     
     func getProduct(completion: @escaping([Product]) -> Void) {
-        DispatchQueue.global().async {
-            self.db.collection("products").getDocuments { snap, error in
-                if let products = snap?.documents {
-                    var productsArray = [Product]()
-                    for product in products {
-                        let id = product["id"] as! Int
-                        let name = product["name"] as! String
-                        let description = product["description"] as! String
-                        let image = product["image"] as? String
-                        let price = product["price"] as! Int
-                        let count = product["count"] as! Int
-                        
-                        let product = Product(id: id, name: name, description: description, image: image ?? "", price: price, count: count)
-                        
-                        productsArray.append(product)
-                        
-                    }
-                    DispatchQueue.main.async {
-                        completion(productsArray)                        
-                    }
+        self.db.collection("products").getDocuments { snap, error in
+            if let products = snap?.documents {
+                var productsArray = [Product]()
+                for product in products {
+                    let id = product["id"] as! Int
+                    let name = product["name"] as! String
+                    let description = product["description"] as! String
+                    let image = product["image"] as? String
+                    let price = product["price"] as! Int
+                    let count = product["count"] as! Int
+                    
+                    let product = Product(id: id, name: name, description: description, image: image ?? "", price: price, count: count)
+                    
+                    productsArray.append(product)
+                    
+                }
+                DispatchQueue.main.async {
+                    completion(productsArray)
                 }
             }
         }
-        
     }
 }
