@@ -165,7 +165,6 @@ final class PhoneViewController: UIViewController {
 
 extension PhoneViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
         if let text = textField.text, !text.isEmpty {
             startAuthPressed(text: text)
         }

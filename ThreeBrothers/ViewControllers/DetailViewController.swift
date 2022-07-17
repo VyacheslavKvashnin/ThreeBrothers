@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-class DetailViewController: UIViewController {
+final class DetailViewController: UIViewController {
     
     var product: Product!
     var products: [Product] = []

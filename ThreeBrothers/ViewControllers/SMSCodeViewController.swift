@@ -147,7 +147,6 @@ final class SMSCodeViewController: UIViewController {
 
 extension SMSCodeViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
         if let text = textField.text, !text.isEmpty {
             let code = text
             verifyCodePressed(code: code)

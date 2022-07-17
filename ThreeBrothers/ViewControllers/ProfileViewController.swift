@@ -9,7 +9,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
-class ProfileViewController: UIViewController {
+final class ProfileViewController: UIViewController {
     
     let databaseServices: DatabaseServices
     

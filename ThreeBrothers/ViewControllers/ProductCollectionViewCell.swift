@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-class ProductCollectionViewCell: UICollectionViewCell {
+final class ProductCollectionViewCell: UICollectionViewCell {
     static let identifier = "productCell"
     
     private let imageView: UIImageView = {
