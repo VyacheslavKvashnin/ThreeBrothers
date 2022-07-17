@@ -72,8 +72,12 @@ class ProfileViewController: UIViewController {
         
         configureItems()
         configureStackView()
-        
-        gestureTap()
+      
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
     }
     
     func getUser() {
@@ -125,15 +129,6 @@ class ProfileViewController: UIViewController {
     
     @objc func logOut() {
         downLoadSheet()
-    }
-    
-    private func gestureTap() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func handleTap() {
-        view.endEditing(true)
     }
     
     private func downLoadSheet() {

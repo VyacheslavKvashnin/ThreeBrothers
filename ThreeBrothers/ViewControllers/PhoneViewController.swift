@@ -59,12 +59,16 @@ final class PhoneViewController: UIViewController {
         setupUI()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+    
     private func setupUI() {
         view.backgroundColor = .white
         phoneTextField.delegate = self
         configureStackView()
         setNotificationForKeyboard()
-        gestureTap()
         addDoneButtonOnKeyboard()
         assignBackground()
     }
@@ -86,14 +90,7 @@ final class PhoneViewController: UIViewController {
         startAuthPressed(text: text)
     }
     
-    private func gestureTap() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        view.addGestureRecognizer(tap)
-    }
     
-    @objc func handleTap() {
-        view.endEditing(true)
-    }
     
     private func configureStackView() {
         view.addSubview(stackView)
@@ -163,11 +160,6 @@ final class PhoneViewController: UIViewController {
         doneToolbar.sizeToFit()
         
         self.phoneTextField.inputAccessoryView = doneToolbar
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
 

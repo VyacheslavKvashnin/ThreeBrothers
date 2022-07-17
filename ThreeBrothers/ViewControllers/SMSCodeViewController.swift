@@ -44,6 +44,11 @@ final class SMSCodeViewController: UIViewController {
         setupUI()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+    
     private func setupUI() {
         view.backgroundColor = .white
         configureStackView()
@@ -115,15 +120,6 @@ final class SMSCodeViewController: UIViewController {
         ])
     }
     
-    private func gestureTap() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func handleTap() {
-        view.endEditing(true)
-    }
-    
     private func addDoneButtonOnKeyboard() {
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
         doneToolbar.barStyle = .default
@@ -146,11 +142,6 @@ final class SMSCodeViewController: UIViewController {
         doneToolbar.sizeToFit()
         
         self.smsCodeTextField.inputAccessoryView = doneToolbar
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
 
